@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>
+ function k2() {
+            window.open('https://line.me/', '_blank');
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI株式推薦システム - 無料で高精度な投資情報を</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ocean-blue': '#0369a1',
+                        'sky-light': '#0ea5e9',
+                        'amber-bright': '#f59e0b',
+                        'emerald-fresh': '#10b981'
+                    },
+                    animation: {
+                        'breathing-glow': 'breathing-glow 2.5s ease-in-out infinite',
+                        'gentle-bounce': 'gentle-bounce 2s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes breathing-glow {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 25px rgba(245, 158, 11, 0.5); 
+            }
+            50% { 
+                transform: scale(1.08); 
+                box-shadow: 0 0 40px rgba(245, 158, 11, 0.9); 
+            }
+        }
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .gradient-ocean { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+        .gradient-amber { background: linear-gradient(135deg, #1ae90c 0%, #69d906 100%); }
+        .text-shadow-bright { text-shadow: 0 2px 10px rgba(245, 158, 11, 0.5); }
+        .shadow-premium { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
+        .backdrop-pattern { 
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    
+    <!-- 第一屏幕 - 用户痛点展示 -->
+    <section class="min-h-screen gradient-ocean backdrop-pattern relative">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center mb-8">
+                <img src="img/ad.jpg" alt="AI株式システム" class="mx-auto rounded-xl shadow-premium animate-gentle-bounce">
+            </div>
+            
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white text-shadow-bright">
+                    AIの力で株式投資を革新
+                </h1>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/30">
+                        <div class="text-3xl font-bold text-amber-bright mb-2">87.51%</div>
+                        <div class="text-lg text-white">勝率</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/30">
+                        <div class="text-3xl font-bold text-amber-bright mb-2">84.39%</div>
+                        <div class="text-lg text-white">精確性</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/30">
+                        <div class="text-3xl font-bold text-amber-bright mb-2">28,900名</div>
+                        <div class="text-lg text-white">現在の会員数</div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <img src="img/cta_title_r.png" alt="今すぐ参加" class="mx-auto mb-6">
+                    <button onclick="k2()" class="gradient-amber text-white font-bold py-4 px-12 rounded-full text-xl animate-breathing-glow hover:scale-105 transition-transform">
+                       急騰株情報をLINEで受け取る
+                    </button>
+                    <p class="text-xl mt-4 text-yellow-200 font-semibold">注意：本サービスは完全無料です</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI分析結果セクション -->
+    <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <img src="img/img_0727_kg1.png" alt="AI分析" class="mx-auto mb-6 rounded-xl shadow-premium">
+                <img src="img/img_kg0725_5.jpg" alt="投資結果" class="mx-auto mb-6 rounded-xl shadow-premium">
+                <img src="img/img_mayoi.png" alt="投資の悩み" class="mx-auto mb-8 rounded-xl shadow-premium">
+                
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-ocean-blue">
+                    最新AI抽出株式。短期間で続々上昇！
+                </h2>
+                <p class="text-xl mb-8 text-gray-700">価値上昇が予想されるこれらの株式の例をご確認ください</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <img src="img/1.png" alt="推薦株式1" class="w-full rounded-xl shadow-premium">
+                    <img src="img/2.png" alt="推薦株式2" class="w-full rounded-xl shadow-premium">
+                    <img src="img/3.png" alt="推薦株式3" class="w-full rounded-xl shadow-premium">
+                    <img src="img/4.png" alt="推薦株式4" class="w-full rounded-xl shadow-premium">
+                </div>
+                
+                <div class="mb-8">
+                    <img src="img/tt0.png" alt="実績データ" class="mx-auto mb-4 rounded-xl shadow-premium">
+                    <img src="img/img_k75_1.png" alt="分析結果" class="mx-auto mb-6 rounded-xl shadow-premium">
+                </div>
+                
+                <button onclick="k2()" class="gradient-amber text-white font-bold py-4 px-12 rounded-full text-xl animate-breathing-glow hover:scale-105 transition-transform mb-6">
+                  急騰株情報をLINEで受け取る
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AIの利点セクション -->
+    <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <img src="img/img_ai.jpg" alt="AI技術" class="mx-auto mb-8 rounded-xl shadow-premium">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-ocean-blue">
+                    最新人工知能を試す2つのメリット
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-premium border border-blue-200">
+                    <h3 class="text-2xl font-bold mb-6 text-ocean-blue">
+                        1. AI抽出の高ポテンシャル株式に注目できる
+                    </h3>
+                    <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                        従来の株式投資では、技術分析や基本分析などの手法を駆使して、大量の労力を投入する必要があります。
+                        しかし、AIを活用することで、そうした面倒は一切不要！
+                        人間の能力を遥かに超えた能力を使った銘柄選択のため、大きな期待を寄せることができます。
+                    </p>
+                    <img src="img/img_merit1.jpg" alt="AI分析のメリット" class="w-full rounded-xl shadow-premium">
+                </div>
+                
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-premium border border-blue-200">
+                    <h3 class="text-2xl font-bold mb-6 text-ocean-blue">
+                        2. 銘柄選びに時間をかけずに簡単投資
+                    </h3>
+                    <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                        「AIって難しそう」「若い人しか使えないのでは？」「機械の操作が苦手…」などの不安をお持ちの個人投資家の方でも、
+                        AIをアプリケーションとして徹底開発済みなので、触れたその日からご利用開始が可能！
+                        株式投資を始めたばかりの方でも、その日に使える簡単プロダクトです！
+                    </p>
+                    <img src="img/img_merit2.jpg" alt="簡単操作" class="w-full rounded-xl shadow-premium">
+                </div>
+            </div>
+            
+            <div class="text-center mb-8">
+                <img src="img/img_kg0703_2.png" alt="使用方法" class="mx-auto mb-4 rounded-xl shadow-premium">
+                <img src="img/img_kg0703_3.png" alt="操作画面" class="mx-auto mb-8 rounded-xl shadow-premium">
+                
+                <button onclick="k2()" class="gradient-amber text-white font-bold py-4 px-12 rounded-full text-xl animate-breathing-glow hover:scale-105 transition-transform">
+                    急騰株情報をLINEで受け取る
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声セクション -->
+    <section class="py-16 bg-gradient-to-b from-slate-800 to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <img src="img/img_tool_back.jpg" alt="ツール背景" class="mx-auto mb-8 rounded-xl shadow-premium">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">
+                    お客様の人工知能への評価
+                </h2>
+                
+                <!-- 5個従衆効應 -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-12">
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/20">
+                        <div class="text-4xl mb-4">👨‍💼</div>
+                        <h4 class="font-bold text-amber-bright mb-2">田中様 (50代)</h4>
+                        <p class="text-sm text-gray-300 mb-3">"AIの予測精度に驚きました。3ヶ月で30%の利益を実現！"</p>
+                        <div class="text-amber-bright">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/20">
+                        <div class="text-4xl mb-4">👩‍💻</div>
+                        <h4 class="font-bold text-amber-bright mb-2">佐藤様 (40代)</h4>
+                        <p class="text-sm text-gray-300 mb-3">"操作が簡単で毎日チェックできます。忙しい私にピッタリ！"</p>
+                        <div class="text-amber-bright">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/20">
+                        <div class="text-4xl mb-4">🧓</div>
+                        <h4 class="font-bold text-amber-bright mb-2">鈴木様 (60代)</h4>
+                        <p class="text-sm text-gray-300 mb-3">"無料でこの品質は素晴らしい。老後の資産運用に最適です。"</p>
+                        <div class="text-amber-bright">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/20">
+                        <div class="text-4xl mb-4">👨‍🎓</div>
+                        <h4 class="font-bold text-amber-bright mb-2">高橋様 (30代)</h4>
+                        <p class="text-sm text-gray-300 mb-3">"投資の勉強時間が大幅短縮。AIが全て分析してくれます！"</p>
+                        <div class="text-amber-bright">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-premium border border-white/20">
+                        <div class="text-4xl mb-4">👩‍🔬</div>
+                        <h4 class="font-bold text-amber-bright mb-2">伊藤様 (35代)</h4>
+                        <p class="text-sm text-gray-300 mb-3">"初心者の私でも安心して使えました。サポートも親切です。"</p>
+                        <div class="text-amber-bright">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 mb-8 shadow-premium border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-4">28,900名の会員が既に参加中！</h3>
+                    <p class="text-lg text-gray-300 mb-4">毎日100名以上の新規登録者が増加しています</p>
+                    <div class="flex justify-center items-center space-x-2">
+                        <span class="text-3xl">🔥</span>
+                        <span class="text-lg font-semibold text-amber-bright">今月だけで3,200名が新規参加</span>
+                        <span class="text-3xl">🔥</span>
+                    </div>
+                </div>
+                
+                <img src="img/cta_title_r.png" alt="行動促進" class="mx-auto mb-8">
+                
+                <button onclick="k2()" class="gradient-amber text-white font-bold py-4 px-12 rounded-full text-xl animate-breathing-glow hover:scale-105 transition-transform">
+                   急騰株情報をLINEで受け取る
+                </button>
+            </div>
+        </div>
+    </section>
+
+  
+
+ <!-- 悬浮按钮 -->
+<div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+    <button onclick="k2()" class="gradient-amber text-white font-bold py-4 px-16 rounded-full text-lg animate-breathing-glow hover:scale-105 transition-transform shadow-2xl whitespace-nowrap">
+       急騰株情報をLINEで受け取る
+    </button>
+</div>
+ 
+
+    <script>
+       
+        
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            });
+            
+            const elementsToAnimate = document.querySelectorAll('.shadow-premium');
+            elementsToAnimate.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>日本株式投資家調査</title>
+    <style>
+        :root {
+            --azure-primary: #0066CC;
+            --royal-secondary: #004499;
+            --light-tertiary: #E6F2FF;
+            --white-base: #FFFFFF;
+            --dark-text: #333333;
+            --light-text: #666666;
+            --border-color: #E0E0E0;
+            --success-green: #00AA44;
+            --shadow-blue: rgba(0, 102, 204, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .app-main-wrapper {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo UI', 'MS PGothic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--light-tertiary) 0%, var(--white-base) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            padding: 10px;
+        }
+
+        .content-wrapper-main {
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 10px;
+            min-height: calc(100vh - 20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .header-profile-section {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-avatar-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: breathing-effect 3s ease-in-out infinite;
+            box-shadow: 0 6px 20px var(--shadow-blue);
+        }
+
+        @keyframes breathing-effect {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        .title-main-heading {
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--azure-primary);
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--azure-primary), var(--royal-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-feature-settings: "kern" 1, "liga" 1;
+        }
+
+        .subtitle-description {
+            font-size: 15px;
+            color: var(--light-text);
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--white-base);
+            padding: 12px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            border: 1px solid rgba(0, 102, 204, 0.05);
+        }
+
+        .progress-tracking-section {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar-track {
+            background: rgba(255, 255, 255, 0.7);
+            height: 6px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--azure-primary), var(--royal-secondary));
+            border-radius: 15px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: progress-shine 2s infinite;
+        }
+
+        @keyframes progress-shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .progress-status-text {
+            text-align: center;
+            font-size: 13px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .form-card-container {
+            background: var(--white-base);
+            border-radius: 16px;
+            padding: 20px 18px;
+            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.12);
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            flex-grow: 1;
+        }
+
+        .question-group-block {
+            display: none;
+        }
+
+        .question-group-block.show-active {
+            display: block;
+            animation: slide-fade-in 0.5s ease-out;
+        }
+
+        @keyframes slide-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-title-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--azure-primary);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-tertiary);
+            letter-spacing: 0.01em;
+        }
+
+        .option-choice-wrapper {
+            margin-bottom: 12px;
+        }
+
+        .choice-label-element {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            background: rgba(230, 242, 255, 0.3);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+        }
+
+        .choice-label-element:hover {
+            background: var(--light-tertiary);
+            border-color: var(--azure-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.15);
+        }
+
+        .choice-input-control {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .choice-label-element.selected-active {
+            background: var(--light-tertiary);
+            border-color: var(--azure-primary);
+            color: var(--royal-secondary);
+            font-weight: 600;
+        }
+
+        .completion-success-panel {
+            display: none;
+            text-align: center;
+            background: var(--white-base);
+            border-radius: 16px;
+            padding: 25px 18px;
+            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.15);
+            border: 2px solid var(--success-green);
+        }
+
+        .completion-success-panel.display-visible {
+            display: block;
+            animation: success-bounce 0.8s ease-out;
+        }
+
+        @keyframes success-bounce {
+            0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+            50% { transform: scale(1.05) translateY(-3px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .success-title-heading {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--success-green);
+            margin-bottom: 15px;
+            letter-spacing: 0.01em;
+        }
+
+        .success-description-content {
+            font-size: 14px;
+            color: var(--dark-text);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .benefits-list-panel {
+            text-align: left;
+            margin-bottom: 20px;
+            background: rgba(0, 170, 68, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .benefit-list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--dark-text);
+        }
+
+        .benefit-icon-mark {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .cta-action-button {
+            background: linear-gradient(135deg, var(--azure-primary), var(--royal-secondary));
+            color: var(--white-base);
+            padding: 14px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+        }
+
+        .disclaimer-warning-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border-left: 3px solid #FF6B35;
+        }
+
+        .warning-alert-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #FF6B35;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert-icon-symbol {
+            margin-right: 6px;
+            font-size: 16px;
+        }
+
+        .disclaimer-points-list {
+            list-style: none;
+            font-size: 11px;
+            color: var(--light-text);
+            line-height: 1.4;
+        }
+
+        .disclaimer-list-point {
+            margin-bottom: 6px;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .disclaimer-list-point::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+            font-weight: bold;
+        }
+
+        .footer-policy-links {
+            margin-top: 12px;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .policy-link-item {
+            color: var(--azure-primary);
+            text-decoration: none;
+            font-size: 11px;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .policy-link-item:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Dialog Styles */
+        .dialog-overlay-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 102, 204, 0.2));
+            backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: overlay-fade-in 0.4s ease-out;
+            padding: 15px;
+        }
+
+        .dialog-overlay-background.show-modal {
+            display: flex;
+        }
+
+        @keyframes overlay-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .dialog-content-box {
+            background: linear-gradient(145deg, var(--white-base), #f8fbff);
+            border-radius: 24px;
+            padding: 30px 25px;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 
+                0 20px 60px rgba(0, 102, 204, 0.25),
+                0 8px 30px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            position: relative;
+            animation: dialog-slide-up 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            overflow: hidden;
+        }
+
+        .dialog-content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--azure-primary), var(--royal-secondary), #00AA44);
+            border-radius: 24px 24px 0 0;
+        }
+
+        @keyframes dialog-slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+            }
+            50% {
+                transform: translateY(-5px) scale(1.02);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .dialog-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(0, 102, 204, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 18px;
+            color: var(--light-text);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dialog-close-btn:hover {
+            background: rgba(255, 107, 53, 0.15);
+            color: #FF6B35;
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .dialog-title-header {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--azure-primary), var(--royal-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        .dialog-message-body {
+            font-size: 15px;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .dialog-links-section {
+            margin-bottom: 25px;
+            text-align: center; 
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.08), rgba(0, 170, 68, 0.05));
+            border-radius: 14px;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dialog-links-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer-sweep 3s infinite;
+        }
+
+        @keyframes shimmer-sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .dialog-policy-link {
+            color: var(--azure-primary);
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 6px 10px;
+            border-radius: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dialog-policy-link:hover {
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--royal-secondary);
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        .dialog-buttons-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .dialog-cancel-btn {
+            padding: 12px 24px;
+            border: 2px solid rgba(0, 102, 204, 0.2);
+            background: linear-gradient(145deg, var(--white-base), #f8fbff);
+            color: var(--light-text);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dialog-cancel-btn:hover {
+            border-color: var(--azure-primary);
+            color: var(--azure-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.15);
+        }
+
+        .dialog-confirm-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--azure-primary), var(--royal-secondary));
+            color: var(--white-base);
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
+            min-width: 100px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+        }
+
+        .dialog-confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
+        }
+
+        @media (max-width: 480px) {
+            .app-main-wrapper {
+                padding: 5px;
+            }
+            
+            .content-wrapper-main {
+                padding: 5px;
+                min-height: calc(100vh - 10px);
+            }
+            
+            .title-main-heading {
+                font-size: 22px;
+            }
+            
+            .form-card-container {
+                padding: 16px 14px;
+            }
+            
+            .completion-success-panel {
+                padding: 20px 14px;
+            }
+
+            .dialog-content-box {
+                padding: 25px 20px;
+                margin: 10px;
+                max-width: calc(100vw - 20px);
+            }
+
+            .dialog-buttons-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .dialog-cancel-btn,
+            .dialog-confirm-btn {
+                width: 100%;
+                padding: 12px;
+            }
+
+            .dialog-overlay-background {
+                padding: 10px;
+                align-items: flex-start;
+                padding-top: 15vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-main-wrapper">
+        <div class="content-wrapper-main">
+            <!-- Header Section -->
+            <div class="header-profile-section">
+                <img src="https://www.jacmsotck.online/415rirenshen/15.jpg" alt="投資家調査" class="profile-avatar-img">
+            </div>
+
+            <h1 class="title-main-heading">日本株式投資家調査</h1>
+            <p class="subtitle-description">アンケート完了後、8つの銘柄リストをプレゼント</p>
+
+            <!-- Progress Bar -->
+            <div class="progress-tracking-section">
+                <div class="progress-bar-track">
+                    <div class="progress-fill-bar" id="progressBarFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-status-text" id="progressStatusText">質問 0/3</div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="form-card-container">
+                <!-- Question 1 -->
+                <div class="question-group-block show-active" id="questionBlockOne">
+                    <h2 class="question-title-text">あなたの投資経験は？</h2>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="selectOptionOne(this, 'beginner')">
+                            <input type="radio" name="experience_level" value="beginner" class="choice-input-control">
+                            初心者（投資経験1年未満）
+                        </label>
+                    </div>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="selectOptionOne(this, 'intermediate')">
+                            <input type="radio" name="experience_level" value="intermediate" class="choice-input-control">
+                            中級者（1-3年経験、自主取引）
+                        </label>
+                    </div>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="selectOptionOne(this, 'advanced')">
+                            <input type="radio" name="experience_level" value="advanced" class="choice-input-control">
+                            上級者（3年以上、多様な戦略に精通）
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-group-block" id="questionBlockTwo">
+                    <h2 class="question-title-text">日本のどの業界に関心がありますか？（複数選択可）</h2>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="toggleOptionTwo(this)">
+                            <input type="checkbox" name="industry_focus" value="technology" class="choice-input-control">
+                            テクノロジー（半導体、AI、インターネット）
+                        </label>
+                    </div>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="toggleOptionTwo(this)">
+                            <input type="checkbox" name="industry_focus" value="consumer" class="choice-input-control">
+                            消費財（小売、食品、自動車）
+                        </label>
+                    </div>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="toggleOptionTwo(this)">
+                            <input type="checkbox" name="industry_focus" value="finance" class="choice-input-control">
+                            金融（銀行、保険、証券）
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-group-block" id="questionBlockThree">
+                    <h2 class="question-title-text">よく使用する分析ツールは？</h2>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="selectOptionThree(this, 'technical')">
+                            <input type="radio" name="analysis_method" value="technical" class="choice-input-control">
+                            テクニカルチャート
+                        </label>
+                    </div>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="selectOptionThree(this, 'fundamental')">
+                            <input type="radio" name="analysis_method" value="fundamental" class="choice-input-control">
+                            ファンダメンタルデータ（決算書、PERなど）
+                        </label>
+                    </div>
+                    <div class="option-choice-wrapper">
+                        <label class="choice-label-element" onclick="selectOptionThree(this, 'news')">
+                            <input type="radio" name="analysis_method" value="news" class="choice-input-control">
+                            ニュース・世論（日経新聞、SNSなど）
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completion Message -->
+            <div class="completion-success-panel" id="completionSuccessPanel">
+                <h2 class="success-title-heading">アンケート完了</h2>
+                <h3 style="font-size: 18px; color: var(--azure-primary); margin-bottom: 12px;">より多くの日本株式市場リソースを取得</h3>
+                
+                <p class="success-description-content">
+                    アンケートにご協力いただき、ありがとうございます！以下の<strong>無料リソース</strong>をご希望の場合は、LINE公式アカウントを追加してください：
+                </p>
+
+                <div class="benefits-list-panel">
+                    <div class="benefit-list-item">
+                        <span class="benefit-icon-mark">👉</span>
+                        <span>『2025年日本株式市場業界データ白書』をプレゼント</span>
+                    </div>
+                    <div class="benefit-list-item">
+                        <span class="benefit-icon-mark">👉</span>
+                        <span>毎週日経指数の動向をお送り</span>
+                    </div>
+                </div>
+
+                <button class="cta-action-button" onclick="showDialogModal()">
+                    LINE公式アカウント追加で受け取る
+                </button>
+            </div>
+
+            <!-- Disclaimer Section -->
+            <div class="disclaimer-warning-section">
+                <div class="warning-alert-title">
+                    <span class="alert-icon-symbol">⚠️</span>
+                    重要なリスク警告
+                </div>
+                <ul class="disclaimer-points-list">
+                    <li class="disclaimer-list-point">本サービスは一般的な市場情報のみを提供しており、投資助言や推奨を構成するものではありません。</li>
+                    <li class="disclaimer-list-point">金融市場にはリスクがあり、投資元本の一部または全部を失う可能性があります。</li>
+                    <li class="disclaimer-list-point">表示されている例はすべて過去のデータ分析であり、将来の収益を保証するものではありません。</li>
+                    <li class="disclaimer-list-point">投資家は自身のリスク許容度に基づいて慎重に判断してください。</li>
+                    <li class="disclaimer-list-point">すべての情報は客観的事実の陳述であり、投資助言を構成するものではありません。</li>
+                </ul>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-policy-links">
+                <a href="https://www.baidu.com" class="policy-link-item">プライバシーポリシー</a>
+                <a href="https://www.baidu.com" class="policy-link-item">利用規約</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="dialog-overlay-background" id="dialogOverlayBackground">
+        <div class="dialog-content-box">
+            <button class="dialog-close-btn" onclick="hideDialogModal()">×</button>
+            
+            <h2 class="dialog-title-header">外部サイトへの移動</h2>
+            
+            <p class="dialog-message-body">
+                あなたは現在のページを離れ、<strong>Line公式アカウント</strong>にリダイレクトされます。
+            </p>
+            
+            <div class="dialog-links-section">
+                <a href="https://www.baidu.com" class="dialog-policy-link">プライバシーポリシー</a>
+                <a href="https://www.baidu.com" class="dialog-policy-link">利用規約</a>
+            </div>
+            
+            <div class="dialog-buttons-row">
+                <button class="dialog-cancel-btn" onclick="hideDialogModal()">
+                    キャンセル
+                </button>
+                <button class="dialog-confirm-btn" onclick="confirmDialogAction()">
+                    LINEに移動
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let stepOneComplete = false;
+        let stepTwoComplete = false;
+        let selectedCategories = [];
+
+        function updateProgressBar() {
+            const fillBar = document.getElementById('progressBarFill');
+            const statusText = document.getElementById('progressStatusText');
+            const percentage = (currentStep - 1) * 33.33;
+            
+            fillBar.style.width = percentage + '%';
+            statusText.textContent = `質問 ${currentStep - 1}/3`;
+        }
+
+        function selectOptionOne(labelEl, optionVal) {
+            const blockOne = document.getElementById('questionBlockOne');
+            const allLabels = blockOne.querySelectorAll('.choice-label-element');
+            allLabels.forEach(label => {
+                label.classList.remove('selected-active');
+            });
+
+            labelEl.classList.add('selected-active');
+            labelEl.querySelector('input').checked = true;
+
+            stepOneComplete = true;
+
+            setTimeout(() => {
+                document.getElementById('questionBlockOne').classList.remove('show-active');
+                document.getElementById('questionBlockTwo').classList.add('show-active');
+                currentStep = 2;
+                updateProgressBar();
+            }, 400);
+        }
+
+        function toggleOptionTwo(labelEl) {
+            const checkboxEl = labelEl.querySelector('input');
+            const categoryVal = checkboxEl.value;
+
+            if (checkboxEl.checked) {
+                labelEl.classList.add('selected-active');
+                if (!selectedCategories.includes(categoryVal)) {
+                    selectedCategories.push(categoryVal);
+                }
+            } else {
+                labelEl.classList.remove('selected-active');
+                selectedCategories = selectedCategories.filter(item => item !== categoryVal);
+            }
+
+            if (selectedCategories.length > 0 && !stepTwoComplete) {
+                stepTwoComplete = true;
+                setTimeout(() => {
+                    document.getElementById('questionBlockTwo').classList.remove('show-active');
+                    document.getElementById('questionBlockThree').classList.add('show-active');
+                    currentStep = 3;
+                    updateProgressBar();
+                }, 600);
+            }
+        }
+
+        function selectOptionThree(labelEl, optionVal) {
+            const blockThree = document.getElementById('questionBlockThree');
+            const allLabels = blockThree.querySelectorAll('.choice-label-element');
+            allLabels.forEach(label => {
+                label.classList.remove('selected-active');
+            });
+
+            labelEl.classList.add('selected-active');
+            labelEl.querySelector('input').checked = true;
+
+            setTimeout(() => {
+                document.getElementById('questionBlockThree').classList.remove('show-active');
+                document.getElementById('completionSuccessPanel').classList.add('display-visible');
+                currentStep = 4;
+                
+                const fillBar = document.getElementById('progressBarFill');
+                const statusText = document.getElementById('progressStatusText');
+                fillBar.style.width = '100%';
+                statusText.textContent = '完了 3/3';
+            }, 400);
+        }
+
+        function kma() {
+            console.log('kma() function called - redirect to LINE');
+        }
+
+        function showDialogModal() {
+            const dialogOverlay = document.getElementById('dialogOverlayBackground');
+            dialogOverlay.classList.add('show-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideDialogModal() {
+            const dialogOverlay = document.getElementById('dialogOverlayBackground');
+            dialogOverlay.classList.remove('show-modal');
+            document.body.style.overflow = 'auto';
+        }
+
+        function confirmDialogAction() {
+            hideDialogModal();
+            kma();
+        }
+
+        document.getElementById('dialogOverlayBackground').addEventListener('click', function(event) {
+            if (event.target === this) {
+                hideDialogModal();
+            }
+        });
+
+        updateProgressBar();
+    </script>
+</body>
+</html>

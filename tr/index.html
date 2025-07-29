@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="ja"><head>
+    <meta charset="UTF-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI株価分析 AI株価予測情報</title>
+    <script type="module"   src="js/main.js"></script> 
+    <link rel="stylesheet"   href="css/main.css">
+	<!-- Google tag (gtag.js) -->
+	<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-11003373667"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'AW-11003373667');
+	  gtag('config', 'G-FQZ5SLP31X');
+	</script>
+	
+	<!-- Event snippet for 购买 conversion page
+	In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+	<script>
+	function gtag_report_conversion(url) {
+	  var callback = function () {
+	    if (typeof(url) != 'undefined') {
+	      window.location = url;
+	    }
+	  };
+	  gtag('event', 'conversion', {
+	      'send_to': 'AW-11003373667/UnfqCIKeheYaEOPQ6P4o',
+	      'transaction_id': '',
+	      'event_callback': callback
+	  });
+	  return false;
+	}
+	</script>
+	
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      function goTo() {
+        gtag_report_conversion("https://www.qq.com");
+      }
+    </script>
+  
+
+</body></html>

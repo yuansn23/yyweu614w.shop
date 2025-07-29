@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>株マイスター - AI株式投資アドバイザー</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breathing-animation {
+            animation: breathe 2s ease-in-out infinite;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); 
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); 
+            }
+        }
+        
+        .pulse-effect {
+            animation: pulse-glow 1.5s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.4); }
+            100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 48px;
+        }
+        
+        .nav-btn {
+            background: #10b981;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 25px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #059669;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 50%, #0f1922 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero-highlight {
+            background: linear-gradient(45deg, #d4af37, #f6e05e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            margin: 32px auto;
+            display: block;
+        }
+        
+        .hero-cta {
+            background: #d4af37;
+            color: #0f1922;
+            padding: 16px 48px;
+            border-radius: 25px;
+            border: none;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-cta:hover {
+            background: #eab308;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 64px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #0f1922;
+        }
+        
+        .bg-gray {
+            background: #f9fafb;
+        }
+        
+        .bg-white {
+            background: white;
+        }
+        
+        .bg-emerald {
+            background: #10b981;
+        }
+        
+        .bg-gray-light {
+            background: #f3f4f6;
+        }
+        
+        /* Problem Section */
+        .problem-content {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        
+        .problem-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .problem-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+        }
+        
+        .problem-list {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .problem-item {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #dc2626;
+        }
+        
+        .problem-item h3 {
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+            color: #0f1922;
+        }
+        
+        .problem-item p {
+            color: #6b7280;
+        }
+        
+        /* Solution Section */
+        .solution-content {
+            text-align: center;
+        }
+        
+        .solution-image {
+            max-width: 100%;
+            height: auto;
+            margin: 32px auto;
+            display: block;
+        }
+        
+        /* Results Section */
+        .results-main-image {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .results-main-image img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            border-radius: 8px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+        
+        .results-grid img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* CTA Section */
+        .cta-content {
+            text-align: center;
+        }
+        
+        .cta-image {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .testimonial-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+        
+        /* Risk Disclosure */
+        .risk-section {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 48px 0;
+        }
+        
+        .risk-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 16px;
+        }
+        
+        .risk-text {
+            font-size: 0.875rem;
+            color: #a16207;
+        }
+        
+        .risk-text p {
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #0f1922;
+            color: white;
+            padding: 48px 0;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-content p {
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .footer-links a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #fde047;
+        }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: calc(100% - 40px);
+            max-width: 400px;
+        }
+        
+        .floating-btn {
+            width: 100%;
+            background: #10b981;
+            color: white;
+            padding: 16px;
+            border-radius: 25px;
+            border: none;
+            font-size: 1.125rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .problem-content, .about-content {
+                flex-direction: column;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <img src="img/header-logo.jpg" alt="株マイスター" class="logo">
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            
+             
+            <img src="img/M0.png" alt="投資実績" class="hero-image">
+            <button onclick="k2()" class="hero-cta breathing-animation">
+                今すぐ無料で始める
+            </button>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title">
+                銘柄の選び方でこんなお悩みありませんか？
+            </h2>
+            <div class="problem-content">
+                <div class="problem-image">
+                    <img src="img/15.png" alt="投資の悩み">
+                </div>
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <h3>時間がない</h3>
+                        <p>忙しくて相場分析に時間を割けない</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>知識不足</h3>
+                        <p>どの銘柄を選べばいいかわからない</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>損失リスク</h3>
+                        <p>間違った判断で大きな損失を出してしまう</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="solution-content">
+                <h2 class="section-title">
+                    当サービスを利用すべき3つの理由
+                </h2>
+                <img src="img/mv_bottom_img01.png" alt="3つの理由" class="solution-image">
+                <img src="img/A2.png" alt="サービスの特徴" class="solution-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="section-title">
+                以前のデータ
+            </h2>
+            <div class="results-main-image">
+                <img src="img/M2.png" alt="実績データ">
+            </div>
+            <div class="results-grid">
+                <img src="img/M4.png" alt="パフォーマンス1">
+                <img src="img/M6.png" alt="パフォーマンス2">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section bg-emerald">
+        <div class="container">
+            <div class="cta-content">
+                <img src="img/BTN1.png" alt="今すぐ開始" class="cta-image" onclick="k2()">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-gray-light">
+        <div class="container">
+            <h2 class="section-title">
+                ユーザーの声をご覧ください
+            </h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="img/R4.png" alt="ユーザー評価1">
+                </div>
+                <div class="testimonial-card">
+                    <img src="img/R5.png" alt="ユーザー評価2">
+                </div>
+                <div class="testimonial-card">
+                    <img src="img/R6.png" alt="ユーザー評価3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="section-title">
+                株マイスターについて
+            </h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/about02_img01.png" alt="会社について">
+                </div>
+                <div class="about-text">
+                    <p>
+                        株マイスターは銘柄相談件数１０万件以上を誇る老舗投資顧問ですので、【銘柄相談スパッと回答くん】では銘柄の概要や市場動向だけでなく、これまでの知見を元に株価分析を含めた売買のアドバイスまでさせていただきます。
+                    </p>
+                    <p>
+                        また、より具体的なご質問についてはLINE上でお送りいただければ、弊社アナリストがご回答させていただきます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>運営商：SQI Japan Co., Ltd.（金融工具業務運営商）</p>
+                <p>登録編号：関東金融局（金融商品取引）第850号</p>
+                <p>会員：日本投資顧問協会会員編号：No. 012-02468</p>
+				 <p>加入協会：一般社団法人 日本投資顧問業協会</p>
+				  <p>住所：東京都千代田区丸の内2-7-2</p>
+				   <p>サポートデスク 電話番号：0120-850-730 ※受付時間(平日9:00～17:00)</p>
+                <div class="footer-links">
+                    <a href="https://kabumai.com/visitor/0sp00sb000/article/privacy">プライバシーポリシー</a>
+                    <a href="https://kabumai.com/visitor/0sp00sb000/article/terms">利用規約</a>
+					  <a href="https://kabumai.com/visitor/0sp00sb000/">利用規約</a><br> 
+                </div>
+				 <div class="footer-links">
+                    <a href="https://kabumai.com/visitor/0sp00sb000/contract/">契約締結前交付書面</a>
+                    <a href="https://kabumai.com/visitor/0sp00sb000/article/outline">特定商取引法に関する表記</a> 
+                </div>
+				  <div class="footer-links"> 
+					    <a href="https://kabumai.com/visitor/0sp00sb000/article/terms">ホーム</a>
+						  <a href="https://kabumai.com/visitor/0sp00sb000/article/privacy">個人情報保護方針</a><br>
+						    <a href="https://kabumai.com/visitor/0sp00sb000/article/fiduciary">お客様本位の業務運営に関する基本方針</a>
+					 <a href="https://www.fsa.go.jp/index.html">金融庁ウェブサイト</a>
+                    <a href="https://www.jiaa.or.jp/">一般社団法人 日本投資顧問業協会</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <div class="floating-cta">
+        <button onclick="k2()" class="floating-btn breathing-animation">
+            🚀 ラインを追加
+        </button>
+    </div>
+
+    <script>
+        function k2() {
+            window.open('https://line.me/', '_blank');
+        }
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
