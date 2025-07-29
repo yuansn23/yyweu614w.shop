@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>
+ function k3() {
+     
+            window.open('https://www.line.me', '_blank');
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能データ統合検索プラットフォーム | Mirai AI Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Yu Gothic', 'メイリオ', 'Meiryo', 'MS P Gothic', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .dark {
+            background-color: #111827;
+            color: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+
+        .dark .header {
+            background-color: #1f2937;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #5D5CDE 0%, #9333ea 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #5D5CDE;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #5D5CDE;
+        }
+
+        .dark .nav-links a {
+            color: #d1d5db;
+        }
+
+        .nav-actions {
+            display: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5D5CDE 0%, #9333ea 100%);
+            color: white;
+            box-shadow: 0 0 30px rgba(93, 92, 222, 0.3);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #5D5CDE;
+        }
+
+        .btn-ghost:hover {
+            color: #4B4AC1;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        .dark .mobile-menu-btn {
+            color: #d1d5db;
+        }
+
+        .mobile-menu {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .dark .mobile-menu {
+            border-color: #374151;
+        }
+
+        .mobile-menu.show {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 0;
+            text-decoration: none;
+            color: #374151;
+        }
+
+        .dark .mobile-menu a {
+            color: #d1d5db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            color: white;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Service Section */
+        .service-section { 
+            background-color: #f9fafb;
+        }
+
+        .dark .service-section {
+            background-color: #1f2937;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .dark .service-card {
+            background-color: #374151;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #5D5CDE 0%, #9333ea 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+        }
+
+        .disclaimer {
+            background-color: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dark .disclaimer {
+            background-color: #451a03;
+            color: #fde047;
+        }
+
+        /* Demo Section */
+        .demo-section { 
+            background-color: white;
+        }
+
+        .dark .demo-section {
+            background-color: #111827;
+        }
+
+        .demo-image {
+            width: 100%;
+            max-width: 32rem;
+            height: 24rem;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 1rem;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .demo-image-placeholder {
+            color: #6b7280;
+            font-size: 1.5rem;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .demo-form {
+            background-color: #f9fafb;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        .demo-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .demo-form {
+            background-color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .dark .form-label {
+            color: #d1d5db;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.125rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #5D5CDE;
+            box-shadow: 0 0 0 3px rgba(93, 92, 222, 0.1);
+        }
+
+        .dark .form-input {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox {
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-label {
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .dark .checkbox-label {
+            color: #9ca3af;
+        }
+
+        .checkbox-label a {
+            color: #5D5CDE;
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #5D5CDE 0%, #9333ea 100%);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(93, 92, 222, 0.3);
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 28rem;
+            width: 100%;
+            margin: 1rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .dark .modal-content {
+            background-color: #1f2937;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            color: #6b7280;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.2);
+            color: #374151;
+        }
+
+        .dark .modal-close {
+            background: rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+
+        .dark .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #d1d5db;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .modal-icon.primary {
+            background: linear-gradient(135deg, #5D5CDE 0%, #9333ea 100%);
+            animation: pulse 2s infinite;
+        }
+
+        .modal-icon.success {
+            background-color: #10b981;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.75rem;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #5D5CDE 0%, #9333ea 100%);
+            border-radius: 9999px;
+            transition: width 3s ease-in-out;
+        }
+
+        .analysis-steps {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .dark .step {
+            color: #9ca3af;
+        }
+
+        .step.active {
+            color: #5D5CDE;
+        }
+
+        .step.complete {
+            color: #10b981;
+        }
+
+        .step-icon {
+            margin-right: 0.5rem;
+            width: 1rem;
+            display: inline-block;
+        }
+
+        .info-box {
+            background-color: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dark .info-box {
+            background-color: #1e3a8a;
+            color: #bfdbfe;
+        }
+
+        .line-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #00c851 0%, #00b74a 100%);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: breathe 2s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(0, 200, 81, 0.3);
+        }
+
+        .line-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 200, 81, 0.4);
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(0, 200, 81, 0.3);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 6px 20px rgba(0, 200, 81, 0.4);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111827;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .nav-actions {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .footer-bottom {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+
+            .footer-bottom .text-right {
+                text-align: right;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="container">
+            <div class="nav">
+                <!-- ロゴ -->
+                <div class="logo">
+                    <div class="logo-icon">🧠</div>
+                    <div class="logo-text">
+                        <h1>Mirai AI Platform</h1>
+                        <p>未来科技</p>
+                    </div>
+                </div>
+                
+                <!-- デスクトップナビゲーション -->
+                <div class="nav-links">
+                    <a href="index.html">製品機能</a>
+                    <a href="product.html">ソリューション</a>
+                    <a href="study.html">学習リソース</a> 
+                    <a href="about.html">会社概要</a>
+                    <a href="ai.html">無料トライアル</a>
+                </div>
+				 
+				
+                
+                <!-- アクションボタン -->
+                <div class="nav-actions">
+                    <button class="btn btn-ghost" onclick="showLoginModal()">ログイン</button>
+                    <button class="btn btn-primary" onclick="showTrialModal()">無料体験</button>
+                </div>
+                
+                <!-- モバイルメニューボタン -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+            
+            <!-- モバイルメニュー -->
+            <div id="mobileMenu" class="mobile-menu">
+                <a href="index.html">製品機能</a>
+                <a href="product.html">ソリューション</a>
+                <a href="study.html">学習リソース</a> 
+                <a href="about.html">会社概要</a>
+                <a href="ai.html">無料トライアル</a>
+                <div style="margin-top: 1rem;">
+                    <button class="btn btn-ghost" onclick="showLoginModal()" style="width: 100%; margin-bottom: 0.5rem;">ログイン</button>
+                    <button class="btn btn-primary" onclick="showTrialModal()" style="width: 100%;">無料体験</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>智能化データ統合検索プラットフォーム</h1>
+                 
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🗃️</span>
+                        <div>データ取得</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔍</span>
+                        <div>情報検索</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📊</span>
+                        <div>データ表示</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📄</span>
+                        <div>参考資料</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	<!-- 検索デモセクション -->
+    <section class="demo-section">
+        <div class="container">
+            <div style="max-width: 64rem; margin: 0 auto;">
+                <!-- ヒーロー画像 -->
+                <div style="text-align: center; ">
+                    
+                    <h2 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">現在12922人が利用しています</h2>
+                    <p style="font-size: 1.25rem; color: #4b5563;">人工知能は2秒以内に分析を完了します</p>
+                </div>
+                
+                <div class="demo-form">
+                    <form id="searchForm">
+                        <div class="form-group">
+                            
+                            <input 
+                                type="text" 
+                                id="companyInput" 
+                                required 
+                                class="form-input"
+                                placeholder="銘柄コードまたは銘柄名を入力してください"
+                            >
+                        </div>
+                        
+                        <!-- 隱私政策復選框 -->
+                        <div class="checkbox-group">
+                            <input 
+                                type="checkbox" 
+                                id="privacyPolicy" 
+                                checked
+                                required
+                                class="checkbox"
+                            >
+                            <label for="privacyPolicy" class="checkbox-label">
+                                <a href="privacy.html" target="_blank">プライバシーポリシー</a>に同意します。データ検索の利用により、当社の個人情報保護方針に同意したものとみなされます。
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            🔍 データ検索開始
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービス説明セクション -->
+    <section class="service-section">
+        <div class="container">
+            <div style="max-width: 64rem; margin: 0 auto; text-align: center;">
+                <div class="service-card">
+                    
+                    
+                    <div class="disclaimer">
+                        <p style="font-size: 0.875rem; color: #92400e;">
+                            <strong>⚠️ 免責事項：</strong>データは参考用途のみで、投資アドバイスを構成するものではありません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- 分析進行モーダル -->
+    <div id="analysisModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAnalysisModal()">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon primary">🤖</div>
+                <h3 class="modal-title">AI分析中...</h3>
+                <p style="color: #4b5563; margin-bottom: 1.5rem;">AIシステムが企業データを分析しています</p>
+            </div>
+            
+            <!-- プログレスバー -->
+            <div class="progress-bar">
+                <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+            </div>
+            
+            <!-- 分析ステップ -->
+            <div class="analysis-steps">
+                <div id="step1" class="step active">
+                    <span class="step-icon">⏳</span>
+                    <span>市場分析を実行中...</span>
+                </div>
+                <div id="step2" class="step">
+                    <span class="step-icon">⏳</span>
+                    <span>最新ニュース分析を実行中...</span>
+                </div>
+                <div id="step3" class="step">
+                    <span class="step-icon">⏳</span>
+                    <span>履歴データ分析を実行中...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 結果表示モーダル -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeResultModal()">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon success">✓</div>
+                <h3 class="modal-title">検索完了</h3>
+                <p style="color: #4b5563; margin-bottom: 1.5rem;">お客様の情報検索が完了いたしました。</p>
+            </div>
+            
+            <div class="info-box">
+                <p style="font-size: 0.875rem; text-align: left; margin-bottom: 1rem;">
+                    <strong>詳細な財務情報データをご覧になりたい場合：</strong><br><br>
+                    専属カスタマーサービスまでお問い合わせください。<br>
+                    分かりやすい公開情報を提供いたします。
+                </p>
+                <button onclick="k3()" class="line-button">
+                    📱 LINE詳細はこちら
+                </button>
+            </div>
+            
+             
+        </div>
+    </div>
+
+    <!-- 無料体験モーダル -->
+    <div id="trialModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTrialModal()">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon primary">🚀</div>
+                <h3 class="modal-title">無料体験・デモ予約</h3>
+                <p style="color: #4b5563; margin-bottom: 1.5rem;">お客様の情報をお聞かせください</p>
+            </div>
+            
+            <form id="trialForm">
+                <div class="form-group">
+                    <label class="form-label">📧 メールアドレス</label>
+                    <input type="email" id="trialEmail" required class="form-input" placeholder="例：example@company.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">📋 ご要望・ニーズ</label>
+                    <textarea id="trialNeeds" required rows="4" class="form-input" style="resize: none;" placeholder="どのようなAIソリューションをお探しですか？"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">📱 LINE ID（任意）</label>
+                    <input type="text" id="trialLine" class="form-input" placeholder="例：@yourlineId">
+                </div>
+                
+                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" onclick="closeTrialModal()" class="btn" style="flex: 1; background: #f3f4f6; color: #374151;">
+                        キャンセル
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        送信
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ログインモーダル -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon primary">👤</div>
+                <h3 class="modal-title">ログイン</h3>
+                <p style="color: #4b5563; margin-bottom: 1.5rem;">アカウントにログインしてください</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">👤 ユーザー名</label>
+                    <input type="text" id="loginUsername" required class="form-input" placeholder="ユーザー名を入力">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">🔒 パスワード</label>
+                    <input type="password" id="loginPassword" required class="form-input" placeholder="パスワードを入力">
+                </div>
+                
+                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" onclick="closeLoginModal()" class="btn" style="flex: 1; background: #f3f4f6; color: #374151;">
+                        キャンセル
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        ログイン
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 成功メッセージモーダル -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon success">✓</div>
+                <h3 class="modal-title" id="successTitle">送信完了</h3>
+                <p style="color: #4b5563; margin-bottom: 1.5rem;" id="successMessage">
+                    お申し込みありがとうございました。<br>
+                    担当者より3営業日以内にご連絡いたします。
+                </p>
+            </div>
+            
+            <button onclick="closeSuccessModal()" class="btn btn-primary" style="width: 100%;">
+                閉じる
+            </button>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section" style="grid-column: span 2;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                        <div style="width: 2.5rem; height: 2.5rem; background: linear-gradient(135deg, #5D5CDE 0%, #9333ea 100%); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">🧠</div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: bold;">Mirai AI Platform</h3>
+                            <p style="font-size: 0.875rem; color: #9ca3af;">未来科技</p>
+                        </div>
+                    </div>
+                    <p style="color: #9ca3af; margin-bottom: 1.5rem;">
+                        AIテクノロジーで企業の未来を創造し、デジタル変革を加速させる革新的なプラットフォームです。
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>製品</h4>
+                    <ul>
+                        <li><a href="#">AIモデル訓練</a></li>
+                        <li><a href="#">企業ソリューション</a></li>
+                        <li><a href="#">開発者コミュニティ</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>会社情報</h4>
+                    <ul>
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">ニュース</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <p><strong>株式会社未来科技 (Mirai Technology Co., Ltd.)</strong></p>
+                    <p>〒100-0005 日本東京千代田区丸之内1-1-1</p>
+                    <p>TEL: +81-3-2092-6232</p>
+                </div>
+                <div class="text-right">
+                    <p>&copy; 2024 株式会社未来科技. All rights reserved.</p>
+                    <div style="margin-top: 0.5rem;">
+                        <a href="privacy.html"    style="color: white; text-decoration: none;">プライバシーポリシー</a>
+                        <a href="terms.html"  style="color: white; text-decoration: none;">利用規約</a>
+						  <a href="Disclaimer.html"  style="color: white; text-decoration: none;">免責事項</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ダークモード検出
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // モバイルメニュー切り替え
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('show');
+        }
+
+        // 検索フォーム処理
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const companyName = document.getElementById('companyInput').value.trim();
+            if (!companyName) return;
+            
+            // 分析モーダルを表示
+            showAnalysisModal(companyName);
+        });
+
+        function showAnalysisModal(companyName) {
+            const modal = document.getElementById('analysisModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // プログレスバーリセット
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '0%';
+            
+            // 分析ステップの初期化
+            resetAnalysisSteps();
+            
+            // プログレスアニメーション開始
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 100);
+            
+            // 分析ステップの更新
+            setTimeout(() => updateStep(1), 800);
+            setTimeout(() => updateStep(2), 1600);
+            setTimeout(() => updateStep(3), 2400);
+            
+            // 3秒後に結果表示
+            setTimeout(() => {
+                closeAnalysisModal();
+                showResultModal(companyName);
+            }, 3000);
+        }
+
+        function resetAnalysisSteps() {
+            for (let i = 1; i <= 3; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.className = 'step';
+                const stepTexts = {
+                    1: '市場分析待機中...',
+                    2: '最新ニュース分析待機中...',
+                    3: '履歴データ分析待機中...'
+                };
+                step.innerHTML = `
+                    <span class="step-icon">⏳</span>
+                    <span>${stepTexts[i]}</span>
+                `;
+            }
+            
+            // 最初のステップをアクティブに
+            const step1 = document.getElementById('step1');
+            step1.className = 'step active';
+            step1.innerHTML = `
+                <span class="step-icon spin">🔄</span>
+                <span>市場分析を実行中...</span>
+            `;
+        }
+
+        function updateStep(stepNumber) {
+            const step = document.getElementById(`step${stepNumber}`);
+            step.className = 'step complete';
+            const stepTexts = {
+                1: '市場分析完了',
+                2: '最新ニュース分析完了',
+                3: '履歴データ分析完了'
+            };
+            step.innerHTML = `
+                <span class="step-icon">✓</span>
+                <span>${stepTexts[stepNumber]}</span>
+            `;
+            
+            // 次のステップをアクティブに
+            if (stepNumber < 3) {
+                const nextStep = document.getElementById(`step${stepNumber + 1}`);
+                nextStep.className = 'step active';
+                const nextTexts = {
+                    2: '最新ニュース分析実行中...',
+                    3: '履歴データ分析実行中...'
+                };
+                nextStep.innerHTML = `
+                    <span class="step-icon spin">🔄</span>
+                    <span>${nextTexts[stepNumber + 1]}</span>
+                `;
+            }
+        }
+
+        function closeAnalysisModal() {
+            const modal = document.getElementById('analysisModal');
+            modal.classList.remove('show');
+            
+            // プログレスバーリセット
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '0%';
+        }
+
+        function showResultModal(companyName) {
+            const modal = document.getElementById('resultModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResultModal() {
+            const modal = document.getElementById('resultModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // 検索フォームリセット
+            document.getElementById('searchForm').reset();
+        }
+
+        // その他のモーダル関数
+        function showTrialModal() {
+            const modal = document.getElementById('trialModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTrialModal() {
+            const modal = document.getElementById('trialModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            document.getElementById('trialForm').reset();
+        }
+
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            document.getElementById('loginForm').reset();
+        }
+
+        function showSuccessModal(title, message) {
+            document.getElementById('successTitle').textContent = title;
+            document.getElementById('successMessage').innerHTML = message;
+            const modal = document.getElementById('successModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // フォーム送信処理
+        document.getElementById('trialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('trialEmail').value;
+            const needs = document.getElementById('trialNeeds').value;
+            
+            if (!email || !needs) return;
+            
+            closeTrialModal();
+            setTimeout(() => {
+                showSuccessModal(
+                    '送信完了',
+                    'お申し込みありがとうございました。<br>担当者より3営業日以内にご連絡いたします。'
+                );
+            }, 300);
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) return;
+            
+            closeLoginModal();
+            setTimeout(() => {
+                showSuccessModal(
+                    'ログイン要請',
+                    'ご利用いただきありがとうございます。<br><br><strong>お客様の販売担当者にお問い合わせください。</strong><br><br>TEL: +81-3-2092-6232<br>営業時間: 平日 9:00-18:00'
+                );
+            }, 300);
+        });
+
+        // モーダル外クリックで閉じる
+        const modals = ['analysisModal', 'resultModal', 'trialModal', 'loginModal', 'successModal'];
+        modals.forEach(modalId => {
+            document.getElementById(modalId).addEventListener('click', function(e) {
+                if (e.target === this) {
+                    if (modalId === 'analysisModal') closeAnalysisModal();
+                    else if (modalId === 'resultModal') closeResultModal();
+                    else if (modalId === 'trialModal') closeTrialModal();
+                    else if (modalId === 'loginModal') closeLoginModal();
+                    else if (modalId === 'successModal') closeSuccessModal();
+                }
+            });
+        });
+
+        // ESCキーでモーダルを閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAnalysisModal();
+                closeResultModal();
+                closeTrialModal();
+                closeLoginModal();
+                closeSuccessModal();
+            }
+        });
+
+        // k3()函数：LINE跳转功能
+       
+    </script>
+</body>
+</html>

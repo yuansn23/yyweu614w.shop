@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-398978277">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-398978277');
+</script>
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI駆動の日本株式投資プラットフォーム</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tech-blue': '#0066FF',
+                        'tech-yellow': '#FFD700',
+                        'tech-cyan': '#00FFFF',
+                        'dark-blue': '#001133',
+                        'light-blue': '#E6F3FF'
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'neon': 'neon 2s ease-in-out infinite alternate'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes neon {
+            from { box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; }
+            to { box-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; }
+        }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 102, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .tech-gradient {
+            background: linear-gradient(135deg, #001133 0%, #0066FF 50%, #00FFFF 100%);
+        }
+        .neon-button {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            transition: all 0.3s ease;
+        }
+        .neon-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #FFD700;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Main Container -->
+    <div class="min-h-screen tech-gradient grid-bg">
+        <!-- Header Section -->
+        <div class="container mx-auto px-4 py-8">
+            <!-- Hero Section -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-tech-yellow to-tech-cyan bg-clip-text text-transparent animate-float">
+                    AIで投資をサポート、簡単に習得
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold text-tech-yellow mb-4">
+                    AIで日本株式に投資しませんか？
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    データ駆動、市場トレンドを正確に洞察する日本株式のチャンス！
+                </p>
+                
+                <!-- Hero Image -->
+                <div class="mb-8 flex justify-center">
+                    <img src="img/2.jpg" alt="AI投資専門家" class="rounded-lg shadow-2xl border-2 border-tech-yellow max-w-sm">
+                </div>
+                
+                <!-- Stats Section -->
+                <div class="bg-black bg-opacity-50 rounded-lg p-6 mb-8 border border-tech-blue">
+                    <p class="text-lg text-tech-cyan mb-2">市場は瞬時に変化し、投資にはより賢いツールが必要です</p>
+                    <p class="text-tech-yellow font-bold">2秒で分析完了、本日利用者数 <span class="text-2xl">8,232</span> 人</p>
+                </div>
+            </div>
+
+            <!-- Analysis Section -->
+            <div class="max-w-2xl mx-auto mb-12">
+                <div class="bg-black bg-opacity-70 rounded-xl p-8 border-2 border-tech-blue shadow-2xl">
+                    <h3 class="text-2xl font-bold text-tech-yellow mb-6 text-center">スマート株式分析</h3>
+                    
+                    <div class="mb-6">
+                        <input type="text" id="stockInput" placeholder="株式コードまたは会社名を入力してください..." 
+                               class="w-full px-4 py-3 text-base bg-gray-800 border-2 border-tech-blue rounded-lg text-white placeholder-gray-400 focus:border-tech-yellow focus:outline-none transition-colors">
+                    </div>
+                    
+                    <button onclick="startAnalysis()" class="w-full neon-button text-black font-bold py-3 px-6 rounded-lg text-lg animate-neon">
+                        AI分析開始
+                    </button>
+                </div>
+            </div>
+
+            <!-- Why Choose AI Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-center text-tech-yellow mb-8">なぜAIで日本株式に投資するのか？</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue hover:border-tech-yellow transition-colors">
+                        <h3 class="text-xl font-bold text-tech-cyan mb-4">1. データ駆動、市場トレンドを正確に洞察</h3>
+                        <p class="text-gray-300">AIは膨大なデータとリアルタイム分析技術に基づいて：</p>
+                        <ul class="text-sm text-gray-400 mt-2 space-y-1">
+                            <li>• 市場の潜在株式を迅速に識別</li>
+                            <li>• 価格トレンドを予測し、投資家のリスク回避をサポート</li>
+                            <li>• 業界のホットスポットを分析し、過小評価された銘柄を発見</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue hover:border-tech-yellow transition-colors">
+                        <h3 class="text-xl font-bold text-tech-cyan mb-4">2. スマート銘柄選択、時間節約で高効率</h3>
+                        <p class="text-gray-300">従来の銘柄選択には多くの時間が必要ですが、AIなら：</p>
+                        <ul class="text-sm text-gray-400 mt-2 space-y-1">
+                            <li>• 数秒で多次元スクリーニングを完了</li>
+                            <li>• 投資スタイルに応じて最適な銘柄をマッチング</li>
+                            <li>• おすすめ株式リストを提供</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue hover:border-tech-yellow transition-colors">
+                        <h3 class="text-xl font-bold text-tech-cyan mb-4">3. 包括的な診断、投資判断により自信</h3>
+                        <p class="text-gray-300">AI診断はファンダメンタルズ、テクニカル、資金フローを分析：</p>
+                        <ul class="text-sm text-gray-400 mt-2 space-y-1">
+                            <li>• 現在の保有株式の潜在力とリスクを評価</li>
+                            <li>• 売買タイミングを識別</li>
+                            <li>• 投資戦略を最適化</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue hover:border-tech-yellow transition-colors">
+                        <h3 class="text-xl font-bold text-tech-cyan mb-4">4. 感情的な判断を回避</h3>
+                        <p class="text-gray-300">投資において、感情は失敗の主要因です。</p>
+                        <p class="text-sm text-gray-400 mt-2">AIは合理性とデータに基づいて、人間の弱点を克服し、より科学的な投資判断をサポートします。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-tech-yellow mb-6">AI銘柄選択サービスを無料体験</h2>
+                <img src="img/1.jpg" alt="AI銘柄選択サービス" class="mx-auto rounded-lg shadow-2xl border-2 border-tech-cyan max-w-sm mb-6">
+                <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue">
+                    <h3 class="text-xl font-bold text-tech-cyan mb-4">スマートリスク警告</h3>
+                    <p class="text-gray-300">AIは市場変化をリアルタイムで監視し、潜在的なリスク警告を提供して、あなたの資産安全を保護します。</p>
+                </div>
+            </div>
+
+            <!-- User Testimonials -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-center text-tech-yellow mb-8">ユーザーのリアルな声：AIはどのように投資体験を変えるか？</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue">
+                        <h4 class="font-bold text-tech-cyan mb-2">山田太郎（東京）</h4>
+                        <p class="text-sm text-gray-300">「以前は良い機会を逃していましたが、AI銘柄選択ツールを使い始めてから、推奨される株式は毎回収益をもたらしてくれます。特にAIの診断機能は、タイムリーなポジション調整で何度も大きな損失を回避できました！」</p>
+                    </div>
+                    
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue">
+                        <h4 class="font-bold text-tech-cyan mb-2">鈴木花子（大阪）</h4>
+                        <p class="text-sm text-gray-300">「初心者投資家として、AIのスマート分析に非常に依存しています。遠回りを避けるだけでなく、投資を素早く習得できました。」</p>
+                    </div>
+                    
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 border border-tech-blue">
+                        <h4 class="font-bold text-tech-cyan mb-2">佐藤健（名古屋）</h4>
+                        <p class="text-sm text-gray-300">「A株、日経指数、さらには世界市場まで、AIは独特な洞察を提供してくれます。私のようなクロスマーケット投資家にとって、本当に便利です！」</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Warning -->
+            <div class="mb-12">
+                <div class="bg-red-900 bg-opacity-50 border-2 border-red-500 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-tech-yellow mb-4">⚠️ 重要リスク警告</h3>
+                    <div class="text-sm text-gray-300 space-y-2">
+                        <p>• 本サービスは一般的な市場情報のみを提供し、投資アドバイスや推奨を構成するものではありません。</p>
+                        <p>• 金融市場にはリスクが存在し、投資元本の一部または全部を失う可能性があります。表示されているすべての例は過去のデータ分析であり、将来の収益を保証するものではありません。</p>
+                        <p>• 投資家は自身のリスク許容度に応じて慎重に判断する必要があります。すべての情報は客観的事実の陳述であり、投資アドバイスを構成するものではありません。</p>
+                        <p>• 本AI分析ツールは過去のデータとアルゴリズムモデルに基づいた確率計算のみを提供し、投資アドバイスを構成するものではありません</p>
+                        <p>• 過去の実績は将来のパフォーマンスを予示するものではなく、実際の収益はAI予測値より低いまたは高い可能性があります</p>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+
+    <!-- Floating Bottom Button -->
+    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <button onclick="k2()" class="neon-button text-black font-bold py-4 px-8 rounded-full text-lg shadow-2xl animate-pulse-glow">
+            🤖 AI分析
+        </button>
+    </div>
+
+    <!-- Analysis Progress Modal -->
+    <div id="progressModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-gray-900 border-2 border-tech-yellow rounded-xl p-8 max-w-md mx-4">
+            <h3 class="text-2xl font-bold text-tech-yellow mb-6 text-center">AI分析中...</h3>
+            
+            <div class="mb-6">
+                <div class="bg-gray-700 rounded-full h-6 overflow-hidden">
+                    <div id="progressBar" class="progress-bar h-full" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-sm text-gray-400 mt-2">
+                    <span>0%</span>
+                    <span id="progressText">100%</span>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-tech-cyan mb-4">AIシステムが以下を統合分析中：</p>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li id="step1" class="opacity-50">• 市場分析</li>
+                    <li id="step2" class="opacity-50">• 最新ニュース分析</li>
+                    <li id="step3" class="opacity-50">• 過去データ分析</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Result Modal -->
+    <div id="resultModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-gray-900 border-2 border-tech-yellow rounded-xl p-8 max-w-md mx-4">
+            <h3 class="text-2xl font-bold text-tech-yellow mb-4 text-center">分析完了！</h3>
+            <p class="text-gray-300 text-center mb-6">株式分析が完了しました。下記リンクからレポートを受け取ってください</p>
+            <p class="text-sm text-tech-cyan text-center mb-6">本日受取人数 8,232 人</p>
+            <button onclick="k2()" class="w-full neon-button text-black font-bold py-3 px-6 rounded-lg text-lg">
+                分析レポートを受け取る
+            </button>
+            <button onclick="closeModal()" class="w-full mt-3 text-gray-400 hover:text-white transition-colors">
+                閉じる
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        function startAnalysis() {
+            const input = document.getElementById('stockInput');
+            if (!input.value.trim()) {
+                showCustomAlert('株式コードまたは会社名を入力してください');
+                return;
+            }
+            
+            // Show progress modal
+            document.getElementById('progressModal').classList.remove('hidden');
+            
+            // Start progress animation
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            
+            const interval = setInterval(() => {
+                progress += 2;
+                progressBar.style.width = progress + '%';
+                
+                // Highlight steps
+                if (progress >= 30) {
+                    step1.classList.remove('opacity-50');
+                    step1.classList.add('text-tech-yellow');
+                }
+                if (progress >= 60) {
+                    step2.classList.remove('opacity-50');
+                    step2.classList.add('text-tech-yellow');
+                }
+                if (progress >= 90) {
+                    step3.classList.remove('opacity-50');
+                    step3.classList.add('text-tech-yellow');
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('progressModal').classList.add('hidden');
+                        document.getElementById('resultModal').classList.remove('hidden');
+                        
+                        // Reset progress for next use
+                        progressBar.style.width = '0%';
+                        step1.classList.add('opacity-50');
+                        step1.classList.remove('text-tech-yellow');
+                        step2.classList.add('opacity-50');
+                        step2.classList.remove('text-tech-yellow');
+                        step3.classList.add('opacity-50');
+                        step3.classList.remove('text-tech-yellow');
+                    }, 500);
+                }
+            }, 50);
+        }
+
+        function closeModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+            document.getElementById('progressModal').classList.add('hidden');
+        }
+
+        function k2() {
+            window.open('https://www.qq.com', '_blank');
+        }
+
+        function showCustomAlert(message) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-gray-900 border-2 border-tech-yellow rounded-lg p-6 max-w-sm mx-4">
+                    <p class="text-gray-300 mb-4 text-center">${message}</p>
+                    <button class="w-full neon-button text-black font-bold py-2 px-4 rounded" onclick="this.closest('.fixed').remove()">確認</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Prevent zoom
+        document.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

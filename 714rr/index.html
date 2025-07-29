@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>
+  function k2() {
+            // LINE跳转逻辑在这里实现
+           window.location.href="https://www.qq.com";
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>日本株式投資 - LINE無料配信</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .main-wrapper {
+            min-height: 100vh;
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+        }
+
+        .hero-banner {
+            padding: 20px 15px;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .participant-counter {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-block {
+            padding: 15px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+            text-align: center;
+        }
+
+        .feature-image {
+            width: 100%; 
+            height: auto;
+            border-radius: 8px;
+            margin: 5px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .benefit-section {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px 15px;
+            margin: 5px 0;
+            border-radius: 12px;
+        }
+
+        .benefit-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .benefit-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,184,148,0.4);
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,184,148,0.6);
+        }
+
+        .highlight-text {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .risk-notice {
+            background: #2d3436;
+            color: #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin: 5px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .footer-links {
+            text-align: center;
+            padding: 20px;
+            background: #2d3436;
+            color: white;
+        }
+
+        .footer-links a {
+            color: #74b9ff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: linear-gradient(45deg, #e84393, #fd79a8);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(232,67,147,0.5);
+            animation: breathe 2s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .success-story {
+            background: linear-gradient(135deg, #00cec9, #00b894);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 5px 0;
+        }
+
+        .survey-section {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px 15px;
+            margin: 5px 0;
+            border-radius: 12px;
+        }
+
+        .survey-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .radio-option:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom {
+            background: white;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #e84393;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .survey-complete {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .complete-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .complete-text {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .gift-list {
+            margin-bottom: 20px;
+        }
+
+        .gift-item {
+            padding: 8px 0;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .survey-cta-button {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,184,148,0.4);
+        }
+
+        .survey-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,184,148,0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .content-block {
+                padding: 12px;
+            }
+            
+            .floating-cta {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .survey-section {
+                padding: 15px 10px;
+            }
+            
+            .question-block {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="hero-banner">
+            <h1 class="hero-title">🚀 急上昇株式情報を無料配信</h1>
+            <p class="hero-subtitle">LINEで受け取る投資の新時代</p>
+            <div class="participant-counter">
+                現在参加者数：21,979名
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="highlight-text">
+                📈 1秒でも早く買え！急騰株情報を無料配信中
+            </div>
+            <img src="img/2.png" alt="株式情報" class="feature-image">
+            <button class="cta-button" onclick="k2()">今すぐLINE友達追加</button>
+        </div>
+
+        <div class="survey-section">
+            <h2 class="survey-title">📋 簡単アンケート</h2>
+            <div class="survey-form" id="surveyForm">
+                <div class="question-block">
+                    <h3 class="question-title">あなたの投資経験は？</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="experience" value="beginner">
+                            <span class="radio-custom"></span>
+                            ① 初心者（投資経験1年未満）
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="experience" value="intermediate">
+                            <span class="radio-custom"></span>
+                            ② 中級者（1-3年経験、自主取引）
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="experience" value="expert">
+                            <span class="radio-custom"></span>
+                            ③ 上級者（3年以上、多様な戦略に精通）
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-block" id="question2" style="display: none;">
+                    <h3 class="question-title">あなたの一般的な分析ツールは何ですか？</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tools" value="technical">
+                            <span class="radio-custom"></span>
+                            ①技術図
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tools" value="fundamental">
+                            <span class="radio-custom"></span>
+                            ② 基本データ（財務報告書、価格と収益率など）
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tools" value="news">
+                            <span class="radio-custom"></span>
+                            ③ ニュースと世論（ニッケイニュース、ソーシャルメディア）
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="survey-complete" id="surveyComplete" style="display: none;">
+                <h3 class="complete-title">アンケート回答完了</h3>
+                <p class="complete-text">以下の無料資料をプレゼントいたします。LINE公式アカウントを追加してください：</p>
+                <div class="gift-list">
+                    <div class="gift-item">👉 《2025年日本株式業界データ白書》をプレゼント</div>
+                    <div class="gift-item">👉 毎週の日経指数動向をお届け</div>
+                </div>
+                <button class="survey-cta-button" onclick="k2()">今すぐLINE追加で資料GET</button>
+            </div>
+        </div>
+
+        <div class="benefit-section">
+            <h2 class="benefit-title">🎯 なぜ今、LINEで株式情報なのか？</h2>
+            <p style="text-align: center; margin-bottom: 15px;">
+                今すぐLINEでゲット<br>
+                急騰株情報、完全無料！
+            </p>
+            <img src="img/3.png" alt="LINE配信" class="feature-image">
+        </div>
+
+        <div class="success-story">
+            <h3 style="margin-bottom: 10px;">💰 実績者の声</h3>
+            <p>多くの方が、LINEで配信される株式投資情報を活用し、<strong>1600万円以上</strong>の利益を獲得しています！</p>
+        </div>
+
+        <div class="content-block">
+            <h3 style="color: #2d3436; margin-bottom: 10px;">📊 厳選3つの配信内容</h3>
+            <ul class="benefit-list">
+                <li class="benefit-item">アナリスト高評価株：評価高、PV値多数、目標株価との乖離大の買い予測銘柄</li>
+                <li class="benefit-item">将来性抜群株：近期実績良好、将来潜在力巨大、上昇期待の精選銘柄</li>
+                <li class="benefit-item">取引量TOP100：LINE証券取扱の取引量最高100銘柄ランキング</li>
+            </ul>
+        </div>
+
+      
+
+        <div class="content-block">
+            <p style="text-align: center; font-weight: bold; color: #00b894; margin-bottom: 10px;">
+                近期実績良好、未来潜在力巨大で上昇期待の精選銘柄をお届けします
+            </p>
+            <img src="img/1.png" alt="成長株情報" class="feature-image">
+            <button class="cta-button" onclick="k2()">成長見込み株をチェック</button>
+        </div>
+
+        <div class="risk-notice">
+            <h4>🔹 重要なリスク警告</h4>
+            <p>• 市場にはリスクがあり、投資は慎重に行う必要があります。過去の実績は将来の成果を保証するものではありません。</p>
+            <p>• コース内容およびツールは参考のみであり、個別の投資アドバイスを構成するものではありません。</p>
+        </div>
+
+        <div class="content-block">
+            <h4 style="margin-bottom: 10px;">重要な開示情報</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+                本ウェブサイトは、日本の金融株に興味のある投資家に学習と交流のプラットフォームを提供することを目的としています。グループメンバーが共有する市場見解、投資経験、関連情報は参考および議論のためのみであり、いかなる形の投資アドバイスや保証も構成しません。本交流グループは純粋に共有目的であり、いかなる形の資産管理や投資アドバイスも構成しません。本サロンのすべての内容は教育目的であり、投資アドバイスを構成しません。株式市場には元本損失リスクがあり、過去の実績は将来の成果を予示しません。参加することで《リスク告知書》のすべての条項に同意したものとみなされます。
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">プライバシーポリシー</a>
+            <a href="#">利用規約</a>
+        </div>
+    </div>
+
+    <button class="floating-cta" onclick="k2()">
+        🚀 今すぐLINE追加で株式情報GET
+    </button>
+
+    <script>
+      
+
+        // 添加滚动效果
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-banner');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+
+        // 按钮点击效果
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 300);
+            });
+        });
+
+        // 表单交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const experienceRadios = document.querySelectorAll('input[name="experience"]');
+            const question1 = document.querySelector('.question-block');
+            const surveyForm = document.getElementById('surveyForm');
+            const surveyComplete = document.getElementById('surveyComplete');
+
+            // 监听第一个问题的选择
+            experienceRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.checked) {
+                        // 替换第一个问题为第二个问题
+                        question1.innerHTML = `
+                            <h3 class="question-title">よく使用する分析ツールは？</h3>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="tools" value="technical">
+                                    <span class="radio-custom"></span>
+                                    ① テクニカルチャート
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tools" value="fundamental">
+                                    <span class="radio-custom"></span>
+                                    ② ファンダメンタル分析（財務、PER等）
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tools" value="news">
+                                    <span class="radio-custom"></span>
+                                    ③ ニュース・市場情報（日経新聞、SNS等）
+                                </label>
+                            </div>
+                        `;
+                        
+                        // 重新绑定第二个问题的事件监听器
+                        const newToolsRadios = question1.querySelectorAll('input[name="tools"]');
+                        newToolsRadios.forEach(toolRadio => {
+                            toolRadio.addEventListener('change', function() {
+                                if (this.checked) {
+                                    // 隐藏表单，显示完成信息
+                                    surveyForm.style.display = 'none';
+                                    surveyComplete.style.display = 'block';
+                                    surveyComplete.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            transform: scale(0);
+            animation: ripple-effect 0.3s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

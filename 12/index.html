@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本業界温度計 | 3秒で分かる熱い業界🔥</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'noto': ['Noto Sans JP', 'sans-serif'],
+                    },
+                    colors: {
+                        'japan-red': '#DC143C',
+                        'japan-blue': '#003f7f',
+                        'hot': '#FF4444',
+                        'warm': '#FF8844',
+                        'cool': '#4488FF',
+                        'cold': '#44DDFF',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .thermometer {
+            background: linear-gradient(to top, #ff4444 0%, #ff4444 var(--fill-percent), #e5e7eb var(--fill-percent), #e5e7eb 100%);
+            transition: all 0.8s ease;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @keyframes thermometer-fill {
+            from { --fill-percent: 0%; }
+            to { --fill-percent: var(--target-percent); }
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Fix dropdown text color */
+        select {
+            color: #374151 !important;
+        }
+        
+        select option {
+            color: #374151 !important;
+            background-color: white !important;
+        }
+        
+        .dark select {
+            color: #374151 !important;
+        }
+        
+        .dark select option {
+            color: #374151 !important;
+            background-color: white !important;
+        }
+    </style>
+</head>
+<body class="font-noto bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Dark mode detection script -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-effect">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="text-2xl">🌡️</div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-white">日本業界温度計</span>
+            </div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">
+                東証リアルタイム（15分遅延）
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 gradient-bg opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Main Title Section -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-4 animate-float">
+                    3秒で分かる日本の熱い業界
+                    <span class="text-6xl md:text-8xl">🔥</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+                    東京証券取引所のリアルタイム資金流動データに基づく（15分遅延）
+                </p>
+                
+                <!-- Key Statistics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
+                    <div class="stats-card dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                        <div class="text-2xl font-bold text-japan-red">33</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300">対象業界</div>
+                    </div>
+                    <div class="stats-card dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                        <div class="text-2xl font-bold text-japan-red">2時間</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300">更新頻度</div>
+                    </div>
+                    <div class="stats-card dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                        <div class="text-2xl font-bold text-japan-red">15分</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300">データ遅延</div>
+                    </div>
+                    <div class="stats-card dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                        <div class="text-2xl font-bold text-japan-red">6要素</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300">分析指標</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual Section -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Temperature Display -->
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="w-24 h-80 bg-gray-200 dark:bg-gray-700 rounded-full relative overflow-hidden shadow-2xl">
+                            <div class="thermometer w-full h-full rounded-full" style="--fill-percent: 85%; --target-percent: 85%"></div>
+                            <div class="absolute top-4 left-1/2 transform -translate-x-1/2 text-white font-bold text-lg">🔥🔥🔥</div>
+                        </div>
+                        <div class="absolute -right-24 top-1/2 transform -translate-y-1/2">
+                            <div class="bg-hot text-white px-4 py-2 rounded-lg font-semibold shadow-lg animate-pulse-slow">
+                                AI
+                            </div>
+                        </div>
+                        <div class="absolute -left-24 top-1/4 transform -translate-y-1/2">
+                            <div class="bg-orange-500 text-white px-3 py-1 rounded-lg text-sm shadow-lg">
+                                医薬品 🔥🔥🔥
+                            </div>
+                        </div>
+                        <div class="absolute -left-20 bottom-1/4 transform translate-y-1/2">
+                            <div class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm shadow-lg">
+                                自動車 ❄️
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Data Preview -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">リアルタイム業界温度</h3>
+                    
+                    <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-lg p-4 text-white transform hover:scale-105 transition-all">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-lg">AI・人工知能</div>
+                                <div class="text-sm opacity-90">外国人買い+15%</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🔥🔥🔥🔥🔥</div>
+                                <div class="text-sm">95%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-lg p-4 text-white transform hover:scale-105 transition-all">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-lg">医薬品</div>
+                                <div class="text-sm opacity-90">出来高+28%</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🔥🔥🔥</div>
+                                <div class="text-sm">72%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg p-4 text-white transform hover:scale-105 transition-all">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-lg">自動車</div>
+                                <div class="text-sm opacity-90">機関売り-12%</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">❄️</div>
+                                <div class="text-sm">8%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-6">
+                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            💡 資金流入・出来高・外国人持ち株・機関動向・技術指標・市場センチメント等6大要素でリアルタイム算出
+                        </div>
+                        <button onclick="scrollToSection('cta')" class="bg-japan-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg animate-bounce-slow">
+                            今すぐ業界温度をチェック →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - Moved to second screen -->
+    <section id="cta" class="py-20 bg-gradient-to-r from-japan-blue to-japan-red text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                注目業界の温度を今すぐチェック
+            </h2>
+            
+            <div class="max-w-md mx-auto bg-white rounded-xl p-8 shadow-2xl">
+                <form class="space-y-6" onsubmit="handleSubmit(event)">
+                    <!-- Industry Selection Dropdown -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-4 text-lg">📊 注目している業界を選択</label>
+                        <select id="industrySelect" style="color: #374151 !important;" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-japan-red focus:border-transparent text-base text-gray-700" required>
+                            <option value="" style="color: #9CA3AF;">業界を選択してください</option>
+                            <option value="医薬品" style="color: #374151;">医薬品</option>
+                            <option value="半導体" style="color: #374151;">半導体</option>
+                            <option value="金融" style="color: #374151;">金融</option>
+                            <option value="自動車" style="color: #374151;">自動車</option>
+                            <option value="AI・人工知能" style="color: #374151;">AI・人工知能</option>
+                            <option value="新エネルギー" style="color: #374151;">新エネルギー</option>
+                            <option value="小売" style="color: #374151;">小売</option>
+                            <option value="不動産" style="color: #374151;">不動産</option>
+                            <option value="その他" style="color: #374151;">その他</option>
+                        </select>
+                    </div>
+
+                    <!-- Interactive Heat Level Selection -->
+                    <div class="mb-8">
+                        <label class="block text-gray-700 font-semibold mb-4 text-lg">🔥 注目温度レベル設定</label>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <div class="flex items-center justify-center mb-4">
+                                <span class="text-gray-600 mr-4">業界温度が</span>
+                                <span id="heatDisplay" class="text-3xl font-bold">🔥🔥🔥</span>
+                                <span class="text-gray-600 ml-4">になったら通知</span>
+                            </div>
+                            <input type="range" id="heatSlider" min="1" max="5" value="3" 
+                                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider">
+                            <div class="grid grid-cols-5 text-xs text-gray-500 mt-2 text-center">
+                                <span>❄️<br>低調</span>
+                                <span>🌡️<br>微温</span>
+                                <span>🔥🔥<br>温暖</span>
+                                <span>🔥🔥🔥<br>熱い</span>
+                                <span>🔥🔥🔥🔥🔥<br>激熱</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-japan-red hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        🎯 専用業界レポートを生成
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-16">
+                なぜ業界温度計を選ぶのか？
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4 text-center">👁️</div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4 text-center">一目で理解</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">
+                        🔥温度で複雑なチャートを置き換え<br>
+                        <span class="font-semibold">半導体=激熱 / 自動車=微温</span>
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4 text-center">⚡</div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4 text-center">リアルタイム追跡</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">
+                        東証33業界をカバー<br>
+                        <span class="font-semibold">2時間毎に自動更新</span>
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4 text-center">🎯</div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4 text-center">知識不要</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">
+                        株式知識は不要<br>
+                        <span class="font-semibold">色を見るだけで理解</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Data Section -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-4">
+                本日の業界温度 TOP3
+            </h2>
+            <p class="text-center text-gray-600 dark:text-gray-400 mb-12">
+                温度値は資金流動・出来高等6要素アルゴリズムで生成（投資助言ではありません）
+            </p>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Top Industry -->
+                <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-xl p-6 mb-6 text-white">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">🥇</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">AI・人工知能</h3>
+                                <p class="text-pink-100">外国人買い+15%</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold mb-1">🔥🔥🔥🔥🔥</div>
+                            <div class="text-pink-100 text-sm">激熱 95%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Industry -->
+                <div class="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-xl p-6 mb-6 text-white">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">🥈</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">医薬品</h3>
+                                <p class="text-orange-100">出来高が年平均を突破</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold mb-1">🔥🔥🔥</div>
+                            <div class="text-orange-100 text-sm">熱い 72%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Industry -->
+                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl p-6 mb-6 text-white">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">🥉</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">自動車</h3>
+                                <p class="text-blue-100">機関投資家売り</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold mb-1">❄️</div>
+                            <div class="text-blue-100 text-sm">低調 8%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="text-2xl">🌡️</div>
+                        <span class="text-lg font-semibold">日本業界温度計</span>
+                    </div>
+                    <p class="text-gray-400">
+                        東京証券取引所のリアルタイムデータに基づき、投資家に直感的な業界熱度分析を提供。
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">データソース</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• 東京証券取引所</li>
+                        <li>• リアルタイム資金流動（15分遅延）</li>
+                        <li>• 33業界セクター</li>
+                        <li>• 2時間毎更新</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">免責事項</h3>
+                    <p class="text-gray-400 text-sm">
+                        このツールは参考用のみで、投資助言ではありません。投資にはリスクが伴います。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 mt-8 text-center text-gray-400">
+                <p>&copy; 2024 日本業界温度計. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global state
+        let selectedIndustry = '';
+        let heatLevel = 3;
+        
+        const heatLevels = {
+            1: { emoji: '❄️', name: '低調', percent: '0-20%' },
+            2: { emoji: '🌡️', name: '微温', percent: '21-40%' },
+            3: { emoji: '🔥🔥', name: '温暖', percent: '41-60%' },
+            4: { emoji: '🔥🔥🔥', name: '熱い', percent: '61-80%' },
+            5: { emoji: '🔥🔥🔥🔥🔥', name: '激熱', percent: '81-100%' }
+        };
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Industry selection functionality
+        function initializeIndustrySelection() {
+            const industrySelect = document.getElementById('industrySelect');
+            
+            industrySelect.addEventListener('change', function() {
+                selectedIndustry = this.value;
+            });
+        }
+
+        // Heat level slider functionality
+        function initializeHeatSlider() {
+            const slider = document.getElementById('heatSlider');
+            const heatDisplay = document.getElementById('heatDisplay');
+
+            slider.addEventListener('input', function() {
+                heatLevel = parseInt(this.value);
+                const level = heatLevels[heatLevel];
+                heatDisplay.textContent = level.emoji;
+            });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            if (!selectedIndustry) {
+                showCustomAlert('注目業界を選択してください');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '🔄 レポート生成中...';
+            submitBtn.disabled = true;
+
+            // Simulate processing
+            setTimeout(() => {
+                showLineModal();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                // Reset form
+                selectedIndustry = '';
+                heatLevel = 3;
+                event.target.reset();
+                document.getElementById('heatSlider').value = 3;
+                document.getElementById('heatDisplay').textContent = '🔥🔥';
+            }, 2000);
+        }
+
+        function showLineModal() {
+            const heatLevelName = heatLevels[heatLevel].name;
+            const heatLevelEmoji = heatLevels[heatLevel].emoji;
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl max-w-md w-full mx-4 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-green-600"></div>
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎉</div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            専用レポート生成完了！
+                        </h3>
+                        <div class="bg-green-50 dark:bg-green-900 p-4 rounded-lg mb-6">
+                            <p class="text-gray-700 dark:text-gray-300 mb-2">
+                                📊 <span class="font-bold text-green-600">${selectedIndustry}</span> 業界の詳細分析レポートを生成しました
+                            </p>
+                            <p class="text-gray-700 dark:text-gray-300 mb-2">
+                                🔥 温度通知設定：<span class="font-bold text-red-500">${heatLevelEmoji} ${heatLevelName}</span>
+                            </p>
+                        </div>
+                        <div class="bg-yellow-50 dark:bg-yellow-900 p-4 rounded-lg mb-6">
+                            <div class="flex items-center justify-center mb-3">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300B900'%3E%3Cpath d='M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h15a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3zM12 6.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM9.75 14.5c-1.5 0-2.75-1.25-2.75-2.75s1.25-2.75 2.75-2.75S12.5 10.25 12.5 11.75 11.25 14.5 9.75 14.5zm4.5 0c-1.5 0-2.75-1.25-2.75-2.75s1.25-2.75 2.75-2.75S16.5 10.25 16.5 11.75 15.25 14.5 14.25 14.5z'/%3E%3C/svg%3E" 
+                                     alt="LINE" class="w-8 h-8 mr-2">
+                                <span class="text-lg font-semibold text-gray-800 dark:text-white">LINE公式アカウント</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm mb-4">
+                                完全版の詳細レポートは、LINE公式アカウントを追加してお受け取りください
+                            </p>
+                            <button onclick="openLineApp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 mb-3">
+                                📱 LINEでレポートを受け取る
+                            </button>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">
+                                LINE ID: @japan-industry-temp
+                            </div>
+                        </div>
+                        <button class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors" onclick="this.closest('.fixed').remove()">
+                            今は結構です
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Auto remove after 15 seconds
+            setTimeout(() => {
+                if (modal.parentNode) {
+                    modal.remove();
+                }
+            }, 15000);
+        }
+
+        function openLineApp() {
+            // Try to open LINE app first, fallback to web
+            const lineAppUrl = 'line://ti/p/@japan-industry-temp';
+            const lineWebUrl = 'https://line.me/R/ti/p/@japan-industry-temp';
+            
+            // Create a temporary link and click it
+            const link = document.createElement('a');
+            link.href = lineAppUrl;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Fallback to web version after a short delay
+            setTimeout(() => {
+                window.open(lineWebUrl, '_blank');
+            }, 1000);
+        }
+
+        function showCustomAlert(message) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">⚠️</div>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6">${message}</p>
+                        <button class="bg-japan-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors" onclick="this.closest('.fixed').remove()">
+                            確認
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            setTimeout(() => {
+                if (modal.parentNode) {
+                    modal.remove();
+                }
+            }, 5000);
+        }
+
+        // Animate thermometer on scroll
+        function animateThermometer() {
+            const thermometer = document.querySelector('.thermometer');
+            if (thermometer) {
+                thermometer.style.animation = 'thermometer-fill 2s ease-out forwards';
+            }
+        }
+
+        // Trigger animation when section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateThermometer();
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.querySelector('section');
+            if (heroSection) {
+                observer.observe(heroSection);
+            }
+            
+            // Initialize interactive features
+            initializeIndustrySelection();
+            initializeHeatSlider();
+        });
+    </script>
+</body>
+</html>

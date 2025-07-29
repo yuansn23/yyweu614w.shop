@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirai AI Platform | AI赋能企业，加速智能转型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'primary-dark': '#4B4AC1',
+                    },
+                    fontFamily: {
+                        'japanese': ['Hiragino Sans', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Yu Gothic', 'メイリオ', 'Meiryo', 'MS P Gothic', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .ai-glow {
+            box-shadow: 0 0 30px rgba(93, 92, 222, 0.3);
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-japanese bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
+    
+    <!-- ヘッダー -->
+    <header class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- ロゴ -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary">Mirai AI Platform</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">未来科技</p>
+                    </div>
+                </div>
+                
+                <!-- デスクトップナビゲーション -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">製品機能</a>
+                    <a href="product.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">ソリューション</a>
+                    <a href="study.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">学習リソース</a> 
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">会社概要</a>
+                    <a href="ai.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">無料トライアル</a>
+                </div>
+                
+                <!-- アクションボタン -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="showLoginModal()" class="text-primary hover:text-primary-dark transition-colors">ログイン</button>
+                    <button onclick="showTrialModal()" class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-all duration-300 ai-glow">
+                        無料体験
+                    </button>
+                </div>
+                
+                <!-- モバイルメニューボタン -->
+                <button class="md:hidden text-gray-700 dark:text-gray-300" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- モバイルメニュー -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t dark:border-gray-700">
+                <div class="flex flex-col space-y-4 mt-4">
+                         <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">製品機能</a>
+                    <a href="product.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">ソリューション</a>
+                    <a href="study.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">学習リソース</a> 
+                    <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">会社概要</a>
+                    <a href="ai.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">無料トライアル</a>
+                    <div class="flex flex-col space-y-2 pt-4">
+                        <button onclick="showLoginModal()" class="text-primary hover:text-primary-dark transition-colors text-left">ログイン</button>
+                        <button onclick="showTrialModal()" class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-all duration-300 w-full">
+                            無料体験
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                        AI赋能企業，<br>
+                        <span class="text-yellow-300">加速智能転型</span>
+                    </h1>
+                    <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                        一站式AI訓練與学習プラットフォーム<br>
+                        企業のデジタル変革を強力にサポートします
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showTrialModal()" class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 ai-glow text-lg">
+                            <i class="fas fa-rocket mr-2"></i>無料体験開始
+                        </button>
+                        <button onclick="showTrialModal()" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all duration-300 text-lg">
+                            <i class="fas fa-calendar-alt mr-2"></i>デモ予約
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block float-animation">
+                    <div class="relative">
+                        <div class="w-96 h-96 bg-white bg-opacity-10 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <div class="w-80 h-80 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <div class="w-64 h-64 bg-gradient-to-r from-primary to-purple-600 rounded-full flex items-center justify-center ai-glow">
+                                    <i class="fas fa-brain text-white text-8xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- フローティング要素 -->
+                        <div class="absolute top-10 right-10 bg-white bg-opacity-20 p-4 rounded-lg backdrop-blur-sm">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute bottom-10 left-10 bg-white bg-opacity-20 p-4 rounded-lg backdrop-blur-sm">
+                            <i class="fas fa-cogs text-white text-2xl"></i>
+                        </div>
+                        <div class="absolute top-1/2 left-0 bg-white bg-opacity-20 p-4 rounded-lg backdrop-blur-sm">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心価値セクション -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">コア価値</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">最先端のAI技術で企業の成長を支援</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- AIモデル訓練 -->
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AIモデル訓練</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        高性能なAIモデルの訓練環境を提供。企業独自のデータを活用し、カスタムAIソリューションを構築できます。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><i class="fas fa-check text-primary mr-2"></i>自動化された訓練パイプライン</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>リアルタイムモニタリング</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>スケーラブルなインフラ</li>
+                    </ul>
+                </div>
+                
+                <!-- 企業定制解決方案 -->
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-building text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">企業向けカスタムソリューション</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        業界特有のニーズに対応したAIソリューション。製造、金融、医療など様々な分野での実績があります。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><i class="fas fa-check text-primary mr-2"></i>業界専門知識の活用</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>カスタムモデル開発</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>24/7サポート体制</li>
+                    </ul>
+                </div>
+                
+                <!-- 開発者学習社区 -->
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">開発者学習コミュニティ</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        AI開発者のためのコミュニティプラットフォーム。学習リソース、チュートリアル、専門家によるサポートを提供。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><i class="fas fa-check text-primary mr-2"></i>豊富な学習コンテンツ</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>実践的なプロジェクト</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>エキスパートによる指導</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA セクション -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">今すぐAIの力を体験しませんか？</h2>
+            <p class="text-xl mb-8 opacity-90">無料トライアルで、あなたのビジネスに最適なAIソリューションを発見してください。</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="showTrialModal()" class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 text-lg">
+                    <i class="fas fa-play mr-2"></i>無料で始める
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all duration-300 text-lg">
+                    <i class="fas fa-phone mr-2"></i>お問い合わせ
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Mirai AI Platform</h3>
+                            <p class="text-sm text-gray-400">未来科技</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        AIテクノロジーで企業の未来を創造し、デジタル変革を加速させる革新的なプラットフォームです。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">製品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">AIモデル訓練</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">企業ソリューション</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">開発者コミュニティ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">会社概要</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">採用情報</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ニュース</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="grid md:grid-cols-2 gap-4 items-center">
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong>株式会社未来科技 (Mirai Technology Co., Ltd.)</strong></p>
+                        <p class="mb-1">〒100-0005 日本東京千代田区丸之内1-1-1</p>
+                        <p>TEL: +81-3-2092-6232</p>
+                    </div>
+                    <div class="text-gray-400 text-sm text-left md:text-right">
+                        <p>&copy; 2024 株式会社未来科技. All rights reserved.</p>
+                        <div class="flex space-x-4 mt-2 justify-start md:justify-end">
+                            <a href="privacy.html" class="hover:text-white transition-colors">プライバシーポリシー</a>
+                            <a href="terms.html" class="hover:text-white transition-colors">利用規約</a>
+							   <a href="Disclaimer.html" class="hover:text-white transition-colors">免責事項</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 無料体験モーダル -->
+    <div id="trialModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">無料体験・デモ予約</h3>
+                <p class="text-gray-600 dark:text-gray-400">お客様の情報をお聞かせください</p>
+            </div>
+            
+            <form id="trialForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>メールアドレス
+                    </label>
+                    <input type="email" id="trialEmail" required 
+                           class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
+                           placeholder="例：example@company.com">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fas fa-clipboard-list mr-2"></i>ご要望・ニーズ
+                    </label>
+                    <textarea id="trialNeeds" required rows="4"
+                              class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-all resize-none"
+                              placeholder="どのようなAIソリューションをお探しですか？"></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fab fa-line mr-2"></i>LINE ID（任意）
+                    </label>
+                    <input type="text" id="trialLine"
+                           class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
+                           placeholder="例：@yourlineId">
+                </div>
+                
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeTrialModal()" 
+                            class="flex-1 px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-lg transition-all">
+                        キャンセル
+                    </button>
+                    <button type="submit" 
+                            class="flex-1 px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg transition-all ai-glow">
+                        送信
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ログインモーダル -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-user text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">ログイン</h3>
+                <p class="text-gray-600 dark:text-gray-400">アカウントにログインしてください</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fas fa-user mr-2"></i>ユーザー名
+                    </label>
+                    <input type="text" id="loginUsername" required 
+                           class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
+                           placeholder="ユーザー名を入力">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <i class="fas fa-lock mr-2"></i>パスワード
+                    </label>
+                    <input type="password" id="loginPassword" required 
+                           class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
+                           placeholder="パスワードを入力">
+                </div>
+                
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeLoginModal()" 
+                            class="flex-1 px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-lg transition-all">
+                        キャンセル
+                    </button>
+                    <button type="submit" 
+                            class="flex-1 px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg transition-all ai-glow">
+                        ログイン
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 成功メッセージモーダル -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4" id="successTitle">送信完了</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-6" id="successMessage">
+                    お申し込みありがとうございました。<br>
+                    担当者より3営業日以内にご連絡いたします。
+                </p>
+                <button onclick="closeSuccessModal()" 
+                        class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg transition-all ai-glow">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ダークモード検出
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // モバイルメニュー切り替え
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロール時のヘッダー効果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('backdrop-blur-sm', 'bg-opacity-95');
+            } else {
+                header.classList.remove('backdrop-blur-sm', 'bg-opacity-95');
+            }
+        });
+
+        // モーダル関数
+        function showTrialModal() {
+            document.getElementById('trialModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTrialModal() {
+            document.getElementById('trialModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            // フォームリセット
+            document.getElementById('trialForm').reset();
+        }
+
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            // フォームリセット
+            document.getElementById('loginForm').reset();
+        }
+
+        function showSuccessModal(title, message) {
+            document.getElementById('successTitle').textContent = title;
+            document.getElementById('successMessage').innerHTML = message;
+            document.getElementById('successModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // フォーム送信処理
+        document.getElementById('trialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('trialEmail').value;
+            const needs = document.getElementById('trialNeeds').value;
+            const line = document.getElementById('trialLine').value;
+            
+            // 簡単なバリデーション
+            if (!email || !needs) {
+                return;
+            }
+            
+            // フォームを閉じる
+            closeTrialModal();
+            
+            // 成功メッセージを表示
+            setTimeout(() => {
+                showSuccessModal(
+                    '送信完了',
+                    'お申し込みありがとうございました。<br>担当者より3営業日以内にご連絡いたします。'
+                );
+            }, 300);
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // 簡単なバリデーション
+            if (!username || !password) {
+                return;
+            }
+            
+            // フォームを閉じる
+            closeLoginModal();
+            
+            // 販売担当者への連絡メッセージを表示
+            setTimeout(() => {
+                showSuccessModal(
+                    'ログイン要請',
+                    'ご利用いただきありがとうございます。<br><br><strong>お客様の販売担当者にお問い合わせください。</strong><br><br>TEL: +81-3-2092-6232<br>営業時間: 平日 9:00-18:00'
+                );
+            }, 300);
+        });
+
+        // モーダル外クリックで閉じる
+        document.getElementById('trialModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTrialModal();
+            }
+        });
+
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLoginModal();
+            }
+        });
+
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessModal();
+            }
+        });
+
+        // ESCキーでモーダルを閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTrialModal();
+                closeLoginModal();
+                closeSuccessModal();
+            }
+        });
+    </script>
+</body>
+</html>

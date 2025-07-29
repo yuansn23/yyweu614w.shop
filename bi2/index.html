@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Moonpay Mining Platform</title>
+    <style>
+        :root {
+            --primary-navy: #1a2744;
+            --secondary-navy: #2d4263;
+            --accent-gold: #c9a96e;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --background-light: #ffffff;
+            --background-section: #f8f9fa;
+            --border-subtle: #e5e7eb;
+            --shadow-subtle: 0 2px 10px rgba(26, 39, 68, 0.1);
+            --shadow-elevated: 0 8px 30px rgba(26, 39, 68, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+            color: var(--background-light);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-carousel {
+            max-width: 500px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--accent-gold);
+        }
+
+        .dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .section-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-block {
+            padding: 4rem 0;
+        }
+
+        .section-block:nth-child(even) {
+            background-color: var(--background-section);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight-text {
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-navy));
+            color: var(--background-light);
+            padding: 2rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .social-sidebar {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--background-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+            color: var(--background-light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .social-sidebar {
+                right: 1rem;
+                gap: 0.5rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .social-icon img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+
+            .section-block {
+                padding: 3rem 0;
+            }
+
+            .content-wrapper {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .social-sidebar {
+                position: fixed;
+                right: 0.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                box-shadow: 0 4px 12px rgba(26, 39, 68, 0.2);
+            }
+
+            .social-icon img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Daily Profits up to 500 - 10,000 USDC/USDT</h1>
+                <div class="hero-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide active">
+                            <img src="img/2.webp" alt="Platform Overview 1">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/3.jpg" alt="Platform Overview 2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/2.webp" alt="Platform Overview 3">
+                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
+                </div>
+                <p class="hero-description">
+                    No deposits required, no collateral needed. Your funds always remain in your wallet, everything is under your control!
+                </p>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose Us?</h2>
+                    <p class="section-subtitle">What benefits will you get by joining us?</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">How to Mine for Free?</h2>
+                    <img src="img/3.jpg" alt="Mining Process" class="section-image">
+                </div>
+                
+                <div class="content-text">
+                    Bitcoin (BTC) mining is the process of using computing hardware to verify transactions and generate income.
+                </div>
+                
+                <div class="content-text">
+                    On our platform, you don't need to top up your account, just connect your wallet to participate.
+                </div>
+                
+                <div class="content-text">
+                    Assets always remain in your wallet, the entire process is safe and transparent.
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">How to Ensure Security?</h2>
+                </div>
+                
+                <div class="content-text">
+                    Your funds always remain in your own wallet, no need to transfer or top up. You have complete control, no risk, 100% safe.
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">Income</h2>
+                </div>
+                
+                <div class="content-text">
+                    We have an open and transparent income model. Users can view mining machine performance data in real-time and calculations are automatically performed daily.
+                </div>
+                
+                <div class="content-text">
+                    The system calculates profits based on actual computing power. There is no maximum limit on daily income, many users can earn $500 to $10,000 per day.
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">Mining Principles</h2>
+                </div>
+                
+                <div class="content-text">
+                    AI dynamic scheduling of PoW computing power, automatically mining BTC, LTC, ETC, DOGE and other mainstream cryptocurrencies.
+                </div>
+                
+                <div class="content-text">
+                    Daily consolidated settlement and withdrawal automatically converted to USDC stablecoin, avoiding coin price volatility risks.
+                </div>
+                
+                <div class="highlight-text">
+                    Summary: Moonpay Mining = Multi-currency PoW mining + Perfect AI strategy + Stable USDC returns. You only need to connect your wallet, no need to top up, deposit or manage equipment, earnings will be automatically distributed on-chain daily.
+                </div>
+            </div>
+        </section>
+
+        <div class="social-sidebar">
+            <a href="https://www.qq.com" class="social-icon" target="_blank" rel="noopener">
+                <img src="img/whatsapp.webp" alt="WhatsApp">
+            </a>
+            <a href="https://www.telegram.com" class="social-icon" target="_blank" rel="noopener">
+                <img src="img/Telegramlogosvg-COvjF.webp" alt="Telegram">
+            </a>
+            <a href="https://www.message.com" class="social-icon" target="_blank" rel="noopener">
+                <img src="img/FacebookMessengerlogo2020svg-dauqw.png" alt="Message">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Remove active class from all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Add active class to current slide and dot
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startCarousel() {
+                slideInterval = setInterval(nextSlide, 1500); // 1 second interval
+            }
+
+            function stopCarousel() {
+                clearInterval(slideInterval);
+            }
+
+            // Add click event listeners to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    stopCarousel();
+                    startCarousel(); // Restart the carousel
+                });
+            });
+
+            // Pause carousel on hover
+            const carousel = document.querySelector('.hero-carousel');
+            carousel.addEventListener('mouseenter', stopCarousel);
+            carousel.addEventListener('mouseleave', startCarousel);
+
+            // Start the carousel
+            startCarousel();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  function ha() {
+            window.open('https://wa.me/', '_blank');
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Digital Business Opportunity - Australia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #1B5E20;
+            --accent-gold: #FF8F00;
+            --ocean-blue: #0277BD;
+            --bright-orange: #FF5722;
+            --warm-white: #FAFAFA;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-strong: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--warm-white) 0%, #E8F5E8 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--ocean-blue) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--bright-orange), var(--accent-gold));
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: var(--shadow-strong);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 87, 34, 0.4);
+        }
+
+        .hero-image {
+            margin-top: 50px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--ocean-blue), var(--primary-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .testimonial-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1F5FE 100%);
+        }
+
+        .testimonial-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--accent-gold);
+        }
+
+        .author-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        .author-title {
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .testimonial-image {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .final-cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--ocean-blue) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .final-cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-button {
+            background: linear-gradient(45deg, var(--bright-orange), #E53935);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.6);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(255, 87, 34, 0.8); }
+            100% { box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4); }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-cta {
+                left: 20px;
+                right: 20px;
+                transform: none;
+            }
+            
+            .floating-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Partner with a Trusted Digital Company for Your Family's Successful Life</h1>
+                <p class="hero-subtitle">Discover how to make a living through a successful digital business with our free webinar.</p>
+                <button class="cta-button" onclick="ha()">Join Us Immediately</button>
+                <img src="img/1.jpg" alt="Happy Family Success" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Create a Real Digital Business That Generates More Income While You Spend More Time with Your Family</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 50px; color: var(--text-light);">Our Global Digital Company's Top 5 Best Offers</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Create</h3>
+                    <p class="feature-description">Build a legitimate and reliable digital franchise business and become a member of the world's largest online business community with over 100,000 members.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="feature-title">Utilize</h3>
+                    <p class="feature-description">Leverage proven automated systems. We provide comprehensive sales funnels and digital marketing systems as the primary driving force for your digital business.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Earn</h3>
+                    <p class="feature-description">Generate substantial income and enjoy a global digital business with multiple revenue streams.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3 class="feature-title">Learn</h3>
+                    <p class="feature-description">Access our user-friendly, world-class training program and enjoy unlimited mentoring and coaching.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h3 class="feature-title">Build</h3>
+                    <p class="feature-description">Create lifelong passive income that your children can inherit, ensuring they have the best future possible.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="cta-button" onclick="ha()">Join Us Immediately</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Digital Business?</h2>
+            
+            <div class="testimonial-content">
+                <div>
+                    <div class="testimonial-text">
+                        <p>My name is Harbin. We live in France and work in the healthcare industry. We have two lovely children. We joined this company to have more time to spend with them, avoid financial worries, and dedicate ourselves to helping other families.</p>
+                        
+                        <p>The potential of this business is so great, it's like sitting on a gold mine! Fortunately, we've been able to reduce our working hours and avoid overtime. We want to spend more time with our family and work less, and this business is the key to achieving our goals. We're grateful for this opportunity.</p>
+                        
+                        <p>This community is unparalleled: we can easily access video training and receive unlimited support from mentors and coaches. Our system is so efficient that it allows us to work smoothly even during busy work and family life. Our business is everywhere - we just need a laptop or a phone. It's global, and we simply choose where to operate.</p>
+                        
+                        <p>We sincerely care about you.</p>
+                    </div>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-name">CEO Harbin</div>
+                        <div class="author-title">Digital Business Success Story</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <img src="img/2.jpg" alt="Harbin and Family" class="testimonial-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <div class="container">
+            <h2 class="final-cta-title">Live Well Online, Spend More Time with Family Offline</h2>
+            <p class="final-cta-subtitle">Say "YES" to the best life today!</p>
+            <button class="cta-button" onclick="ha()">Join Us Immediately</button>
+            <p class="disclaimer">Like any legitimate business, results vary and cannot be guaranteed.</p>
+        </div>
+    </section>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <button class="floating-button" onclick="ha()">Join Now, Reserve Your Free Seat</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+            </div>
+            <p>&copy; 2024 Digital Business Opportunity Australia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+      
+
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
