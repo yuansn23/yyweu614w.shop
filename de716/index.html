@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wohlstandscode - Finanzielle Freiheit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        .fade-in-slow {
+            animation: fadeInSlow 2s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        .fade-in-delay {
+            animation: fadeInSlow 2s ease-in-out 0.5s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeInSlow {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .bg-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8) 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        /* 确保在移动设备上按钮可见 */
+        @media (max-width: 768px) {
+            .mobile-form {
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+            }
+            .mobile-button {
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+                position: relative;
+                z-index: 1001;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'gold': '#D4AF37',
+                        'dark-gold': '#B8941F',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full font-sans">
+    <div class="min-h-screen relative">
+        <!-- K-line Background Animation -->
+        <div class="absolute inset-0 bg-gray-900">
+            <canvas id="klineCanvas" class="absolute inset-0 w-full h-full opacity-60 blur-none"></canvas>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-overlay"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 min-h-screen flex items-center justify-center px-4 py-2 md:py-16">
+            <div class="max-w-6xl w-full grid lg:grid-cols-2 gap-4 lg:gap-12 items-start lg:items-center">
+                
+                <!-- Left Column - Hero Text -->
+                <div class="text-center lg:text-left space-y-3 lg:space-y-8 mb-4 lg:mb-0">
+                    <div class="space-y-2 lg:space-y-6">
+                        <h1 class="fade-in-slow text-3xl lg:text-7xl font-serif font-bold text-gold tracking-wide">
+                            Wohlstandscode
+                        </h1>
+                        <p class="fade-in-delay text-lg lg:text-2xl text-white font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            Sind Sie bereit? Das Tor zum finanziellen Erfolg öffnet sich...
+                        </p>
+                    </div>
+                    
+                    <div class="fade-in-delay hidden lg:block">
+                        <div class="w-24 h-1 bg-gold mx-auto lg:mx-0"></div>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Form -->
+                <div class="fade-in-delay">
+                    <div class="glass-effect rounded-2xl p-4 lg:p-8 shadow-2xl max-w-md mx-auto mobile-form">
+                        <div class="text-center mb-4 lg:mb-8">
+                            <h2 class="text-base lg:text-2xl font-serif font-semibold text-white mb-2 lg:mb-4">
+                                Finanzielle Freiheit beginnt mit der richtigen Entscheidung!
+                            </h2>
+                            <p class="text-gray-300 text-xs lg:text-sm leading-relaxed">
+                                Geben Sie Ihre Daten ein und erhalten Sie kostenlos das exklusive E-Book
+                            </p>
+                        </div>
+                        
+                        <form class="space-y-3 lg:space-y-6" onsubmit="u2(event)">
+                            <div>
+                                <label class="block text-white text-sm font-medium mb-1">
+                                    Name
+                                </label>
+                                <input type="text" 
+                                       required
+                                       class="w-full px-4 py-3 text-base bg-black/70 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                                       placeholder="">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white text-sm font-medium mb-1">
+                                    Ihr aktuelles Aktienticker-Symbol
+                                </label>
+                                <input type="text" 
+                                       required
+                                       class="w-full px-4 py-3 text-base bg-black/70 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                                       placeholder="z.B. BMW, SAP,AAPL">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white text-sm font-medium mb-1">
+                                    Ihre WhatsApp-Nummer
+                                </label>
+                                <input type="text" 
+                                       required
+                                       class="w-full px-4 py-3 text-base bg-black/70 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                                       placeholder="WhatsApp/E-Mail">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white text-sm font-medium mb-1">
+                                    Investitionserfahrung
+                                </label>
+                                <select required
+                                        class="w-full px-4 py-3 text-base bg-black/70 border border-white/30 rounded-lg text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all">
+                                    <option value="" class="bg-gray-800">Bitte auswählen</option>
+                                    <option value="anfaenger" class="bg-gray-800">Anfänger</option>
+                                    <option value="mittelstufe" class="bg-gray-800">Mittelstufe</option>
+                                    <option value="fortgeschritten" class="bg-gray-800">Fortgeschritten</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mobile-button">
+                                <button type="submit" 
+                                        class="w-full bg-gradient-to-r from-gold to-dark-gold text-black font-semibold py-4 px-6 rounded-lg btn-glow text-lg">
+                                    Jetzt beginnen
+                                </button>
+                            </div>
+                        </form>
+                        
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subtle particles effect -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-5">
+            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-gold rounded-full opacity-30 animate-pulse"></div>
+            <div class="absolute top-3/4 right-1/3 w-1 h-1 bg-gold rounded-full opacity-40 animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-gold rounded-full opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+    </div>
+    
+    <script>
+        // K-line animation with Anime.js
+        const canvas = document.getElementById('klineCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        const klines = [];
+        const numKlines = Math.floor(canvas.width / 20);
+        
+        // Generate initial K-line data to fill the entire screen
+        for (let i = 0; i < numKlines + 10; i++) {
+            const kline = {
+                x: i * 20,
+                open: Math.random() * 400 + 200,
+                close: Math.random() * 400 + 200,
+                high: Math.random() * 500 + 300,
+                low: Math.random() * 300 + 100,
+                opacity: 1,
+                scale: 1
+            };
+            klines.push(kline);
+        }
+        
+        function drawKline(kline) {
+            const { x, open, close, high, low, opacity, scale } = kline;
+            const y = canvas.height / 2;
+            const drawScale = 1.5 * scale;
+            
+            ctx.save();
+            ctx.globalAlpha = opacity * 0.9;
+            
+            // Determine color with brighter colors
+            const isGreen = close > open;
+            ctx.strokeStyle = isGreen ? '#22C55E' : '#F87171';
+            ctx.fillStyle = isGreen ? '#22C55E' : '#F87171';
+            
+            // Draw high-low line with thicker stroke
+            ctx.beginPath();
+            ctx.moveTo(x + 10, y - (high * drawScale / 4));
+            ctx.lineTo(x + 10, y - (low * drawScale / 4));
+            ctx.lineWidth = 5;
+            ctx.stroke();
+            
+            // Draw body with larger size
+            const bodyHeight = Math.abs(close - open) * drawScale / 4;
+            const bodyY = y - Math.max(open, close) * drawScale / 4;
+            
+            if (isGreen) {
+                ctx.fillRect(x, bodyY, 20, bodyHeight);
+            } else {
+                ctx.strokeRect(x, bodyY, 20, bodyHeight);
+                ctx.lineWidth = 4;
+            }
+            
+            ctx.restore();
+        }
+        
+        function createNewKline() {
+            const lastKline = klines[klines.length - 1];
+            const basePrice = lastKline ? lastKline.close + (Math.random() - 0.5) * 200 : 300;
+            
+            const kline = {
+                x: canvas.width + 20,
+                open: basePrice,
+                close: basePrice + (Math.random() - 0.5) * 150,
+                high: basePrice + Math.random() * 250 + 60,
+                low: basePrice - Math.random() * 250 - 60,
+                opacity: 0,
+                scale: 0.5
+            };
+            
+            klines.push(kline);
+            
+            // Animate new K-line entry
+            anime({
+                targets: kline,
+                opacity: 1,
+                scale: 1,
+                duration: 800,
+                easing: 'easeOutElastic(1, .8)'
+            });
+            
+            // Animate movement
+            anime({
+                targets: klines,
+                x: function(el) {
+                    return el.x - canvas.width - 40;
+                },
+                duration: 15000,
+                easing: 'linear'
+            });
+            
+            // Random price fluctuations with larger amplitude
+            klines.forEach((kl, index) => {
+                if (Math.random() < 0.6) {
+                    const fluctuation = (Math.random() - 0.5) * 120;
+                    anime({
+                        targets: kl,
+                        open: kl.open + fluctuation,
+                        close: kl.close + fluctuation,
+                        high: kl.high + fluctuation,
+                        low: kl.low + fluctuation,
+                        duration: 1500,
+                        easing: 'easeInOutQuad'
+                    });
+                }
+            });
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Remove K-lines that are off screen
+            for (let i = klines.length - 1; i >= 0; i--) {
+                if (klines[i].x < -50) {
+                    klines.splice(i, 1);
+                }
+            }
+            
+            // Draw all K-lines
+            klines.forEach(drawKline);
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Start animation
+        animate();
+        
+        // Create new K-lines periodically
+        setInterval(createNewKline, 1500);
+        
+        // Initialize with some K-lines
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createNewKline, i * 300);
+        }
+
+        function u2(event) {
+            event.preventDefault();
+            window.location.href = 'https://www.qq.com';
+        }
+    </script>
+</body>
+</html>

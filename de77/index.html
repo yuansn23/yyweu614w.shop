@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script>
+ function opensite() {
+            window.open('https://wa.me/1234567890', '_blank');
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Andreas Graf - Finanzbildung für alle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #2C2C2C;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .breathe {
+            animation: breathe 2s infinite;
+        }
+        
+        .pulse-effect {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .bounce-effect {
+            animation: bounce 2s infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2C2C2C 0%, #4A4A4A 50%, #2C2C2C 100%);
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+        }
+        
+        .card-3d {
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.3s ease;
+        }
+        
+        .card-3d:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+        }
+        
+        .whatsapp-icon {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-5px);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #EF4444;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 24px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #D1D5DB;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+            margin-bottom: 48px;
+        }
+        
+        .profile-card {
+            background-color: #374151;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-bottom: 48px;
+        }
+        
+        .profile-image {
+            width: 192px;
+            height: 192px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 16px;
+            border: 4px solid #FFD700;
+            display: block;
+        }
+        
+        .btn-primary {
+            background-color: #FFD700;
+            color: #2C2C2C;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-orange {
+            background-color: #FF6B35;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-blue {
+            background-color: #4A90E2;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 80px 0;
+        }
+        
+        .section-gray {
+            background-color: #111827;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 64px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 48px;
+            align-items: center;
+            margin-bottom: 64px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+        
+        .card {
+            background-color: #374151;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 8px;
+        }
+        
+        .card-text {
+            color: #D1D5DB;
+        }
+        
+        .highlight-box {
+            background-color: #FFD700;
+            color: #2C2C2C;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin: 4px;
+        }
+        
+        .tag-blue { background-color: #4A90E2; color: white; }
+        .tag-orange { background-color: #FF6B35; color: white; }
+        .tag-yellow { background-color: #FFD700; color: #2C2C2C; }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            background-color: #FFD700;
+            color: #2C2C2C;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.125rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .footer {
+            background-color: #000;
+            padding: 48px 0;
+        }
+        
+        .footer-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 24px;
+        }
+        
+        .footer-text {
+            color: #D1D5DB;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #9CA3AF;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-link {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #FFD700;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FFD700;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.25rem; }
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            .whatsapp-icon { right: 16px; }
+            .floating-btn { 
+                left: 16px; 
+                right: 16px; 
+                transform: none; 
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
+            .footer-bottom { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+<!-- 
+    <div class="whatsapp-icon">
+        <div style="position: relative;">
+            <button onclick="opensite()" class="whatsapp-btn breathe hover-lift">
+                &#x260E;
+            </button>
+            <div class="notification-badge breathe">
+                1
+            </div>
+        </div>
+    </div>
+	-->
+
+    <!-- 第一屏 - 英雄区域 -->
+    <section class="hero-section gradient-bg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title bounce-effect">
+                    Finanzwissen für ALLE
+                </h1>
+                <p class="hero-subtitle">
+                    In der Finanzwelt glauben viele, dass erfolgreiche Investitionen komplexe mathematische Modelle erfordern, 
+                    aber <span style="color: #FFD700; font-weight: bold;">Professor Andreas Graf</span> revolutioniert diese Ansicht.
+                </p>
+                <p class="hero-description">
+                    Er glaubt, dass wahre Finanzweisheit darin liegt, komplexe Marktphänomene in Wissen umzuwandeln, 
+                    das gewöhnliche Menschen verstehen können.
+                </p>
+                
+                <div class="profile-card card-3d">
+                    <img src="img/1.png" alt="Andreas Graf" class="profile-image">
+                    <h3 style="font-size: 1.25rem; font-weight: bold; color: #FFD700;">Professor Andreas Graf</h3>
+                    <p style="color: #D1D5DB;">Alter: 54 Jahre | Geburtsort: Regensburg, Bayern, Deutschland</p>
+                </div>
+                
+                <button onclick="opensite()" class="btn-primary pulse-effect">
+                    &#x1F465; Kostenlos der Gemeinschaft beitreten
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator bounce-effect">
+            &#x25BC;
+        </div>
+    </section>
+
+    <!-- 第二屏 - 专家背景 -->
+    <section class="section section-gray">
+        <div class="container">
+            <div style="max-width: 1536px; margin: 0 auto;">
+                <h2 class="section-title">
+                    Über Professor Andreas Graf
+                </h2>
+                
+                <div class="grid-2">
+                    <div class="card-3d">
+                        <img src="img/3.jpg" alt="Andreas Graf Portrait" style="width: 100%; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <p style="font-size: 1.125rem; color: #D1D5DB; line-height: 1.6;">
+                            Professor Andreas Graf ist ein 54-jähriger deutscher Finanzexperte, geboren in Regensburg. 
+                            Er erwarb seinen Bachelor- und Masterabschluss in Finanzwesen und Wirtschaft an der Universität München, 
+                            gefolgt von einer Promotion in Finanzwesen an der Universität Hamburg.
+                        </p>
+                        <p style="font-size: 1.125rem; color: #D1D5DB; line-height: 1.6;">
+                            Seine frühen Forschungen konzentrierten sich auf Kapitalflüsse, Risikopreismodelle und 
+                            die Stabilität von Finanzsystemen.
+                        </p>
+                        <div class="highlight-box">
+                            <p style="font-weight: bold; margin-bottom: 4px;">Während seiner Zeit an der Frankfurter Börse</p>
+                            <p>8 Jahre als Senior-Marktanalyst, leitete mehrere internationale M&A-Projekte</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button onclick="opensite()" class="btn-orange hover-lift bounce-effect">
+                        &#x260E; Kostenlos der Gemeinschaft beitreten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第三屏 - 成就与创新 -->
+    <section class="section gradient-bg">
+        <div class="container">
+            <div style="max-width: 1536px; margin: 0 auto;">
+                <h2 class="section-title">
+                    Innovation & Erfolg
+                </h2>
+                
+                <div class="grid-3">
+                    <div class="card card-3d hover-lift">
+                        <div class="card-icon" style="color: #4A90E2;">
+                            &#x1F3EB;
+                        </div>
+                        <h3 class="card-title">USA-Karriere</h3>
+                        <p class="card-text">Gastprofessor an der Columbia University und Strategieberater für BlackRock und JP Morgan</p>
+                    </div>
+                    
+                    <div class="card card-3d hover-lift">
+                        <div class="card-icon" style="color: #FF6B35;">
+                            &#x1F9E0;
+                        </div>
+                        <h3 class="card-title">KI-Forschung</h3>
+                        <p class="card-text">Spezialisiert auf Behavioral Finance und KI-Trading mit praktischen Ergebnissen</p>
+                    </div>
+                    
+                    <div class="card card-3d hover-lift">
+                        <div class="card-icon" style="color: #FFD700;">
+                            &#x1F30D;
+                        </div>
+                        <h3 class="card-title">IEEC Gründung</h3>
+                        <p class="card-text">2015 gründete er den International Economic Education Council</p>
+                    </div>
+                </div>
+                
+                <div style="background-color: #374151; padding: 32px; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); margin-bottom: 48px;" class="card-3d">
+                    <div class="grid-2">
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: bold; color: #FFD700; margin-bottom: 16px;">KI-Investitionsanalysesystem</h3>
+                            <p style="color: #D1D5DB; line-height: 1.6; margin-bottom: 24px;">
+                                Sein IEEC-Forschungsteam entwickelt KI-Investitionsanalysesysteme, die US-, Europa- und 
+                                Asien-Pazifik-Märkte abdecken, mit Echtzeit-Datenrespons, Sentimentanalyse und 
+                                multidimensionaler Risikovorhersage.
+                            </p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                                <span class="tag tag-blue">Echtzeit-Analyse</span>
+                                <span class="tag tag-orange">Globale Märkte</span>
+                                <span class="tag tag-yellow">KI-gestützt</span>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="img/2.png" alt="KI System" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button onclick="opensite()" class="btn-blue hover-lift pulse-effect">
+                        &#x1F680; Kostenlos der Gemeinschaft beitreten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 悬浮底部按钮 -->
+    <button onclick="opensite()" class="floating-btn breathe hover-lift">
+        &#x260E; Jetzt der Community beitreten
+    </button>
+
+    <!-- 风险提示和政策声明 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">⚠️ Wichtiger Risikohinweis</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <p class="footer-text">• Dieser Service bietet nur allgemeine Marktinformationen und stellt keine Anlageberatung oder -empfehlung dar.</p>
+                <p class="footer-text">• Finanzmärkte bergen Risiken, Sie können einen Teil oder Ihr gesamtes Anlagekapital verlieren.</p>
+                <p class="footer-text">• Alle gezeigten Beispiele basieren auf historischen Datenanalysen und stellen keine Garantie für zukünftige Erträge dar.</p>
+                <p class="footer-text">• Anleger sollten Entscheidungen basierend auf ihrer eigenen Risikotoleranz treffen.</p>
+                <p class="footer-text">• Alle Informationen sind objektive Tatsachendarstellungen und stellen keine Anlageberatung dar.</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <p>© 2024 Andreas Graf - Finanzbildung. Alle Rechte vorbehalten.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" target="_blank" class="footer-link">Datenschutzrichtlinie</a>
+                    <a href="#" target="_blank" class="footer-link">Nutzungsbedingungen</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+
+        // 深色模式支持
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // 平滑滚动效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

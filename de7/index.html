@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="de" class="investment-landing-page-container">
+<head>
+<script>
+   function k2() {
+            window.open('https://wa.me/111111111', '_blank');
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Investment-Erfolg: Exklusive Aktien-Strategien</title>
+    <style>
+        :root {
+            --primary-accent-color: #ff6b35;
+            --secondary-accent-color: #1a73e8;
+            --tertiary-accent-color: #34d399;
+            --quaternary-accent-color: #f59e0b;
+            --background-primary-shade: #0f172a;
+            --background-secondary-shade: #1e293b;
+            --text-primary-luminance: #ffffff;
+            --text-secondary-luminance: #e2e8f0;
+            --text-muted-luminance: #94a3b8;
+            --surface-elevated-shade: #334155;
+            --border-subtle-shade: #475569;
+            --success-indicator-hue: #10b981;
+            --warning-indicator-hue: #f59e0b;
+            --danger-indicator-hue: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .investment-landing-page-container {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary-luminance);
+            background: linear-gradient(135deg, var(--background-primary-shade) 0%, var(--background-secondary-shade) 100%);
+            overflow-x: hidden;
+        }
+
+        .main-content-wrapper {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero-section-container {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary-accent-color) 0%, var(--secondary-accent-color) 50%, var(--tertiary-accent-color) 100%);
+            background-size: 400% 400%;
+            animation: gradient-shift-animation 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradient-shift-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-section-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .primary-headline-element {
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: headline-pulse-animation 3s ease-in-out infinite;
+        }
+
+        @keyframes headline-pulse-animation {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .secondary-headline-element {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .countdown-timer-component {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-timer-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--quaternary-accent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .countdown-display-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .countdown-unit-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 2px solid var(--tertiary-accent-color);
+            animation: countdown-glow-animation 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes countdown-glow-animation {
+            0% { box-shadow: 0 0 5px var(--tertiary-accent-color); }
+            100% { box-shadow: 0 0 20px var(--tertiary-accent-color), 0 0 30px var(--tertiary-accent-color); }
+        }
+
+        .countdown-number-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary-luminance);
+        }
+
+        .countdown-label-text {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .content-section-wrapper {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-highlight-container {
+            background: linear-gradient(135deg, var(--surface-elevated-shade) 0%, var(--background-secondary-shade) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-subtle-shade);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-highlight-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer-sweep-animation 3s infinite;
+        }
+
+        @keyframes shimmer-sweep-animation {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .section-headline-primary {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-accent-color), var(--secondary-accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-headline-secondary {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--tertiary-accent-color);
+        }
+
+        .feature-benefit-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .feature-benefit-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-benefit-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-benefit-item::before {
+            content: '✓';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--success-indicator-hue);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .benefit-title-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--quaternary-accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-description-text {
+            color: var(--text-secondary-luminance);
+            line-height: 1.7;
+        }
+
+        .promotional-image-container {
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .promotional-image-element {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 3px solid var(--tertiary-accent-color);
+            animation: image-float-animation 6s ease-in-out infinite;
+        }
+
+        .hero-image-container {
+            margin: 2rem 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-promotional-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+            border: 4px solid var(--quaternary-accent-color);
+            animation: hero-image-glow-animation 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-promotional-image:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes hero-image-glow-animation {
+            0%, 100% { 
+                box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), 0 0 20px var(--quaternary-accent-color); 
+            }
+            50% { 
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px var(--quaternary-accent-color); 
+            }
+        }
+
+        @keyframes image-float-animation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .call-to-action-button {
+            background: linear-gradient(45deg, var(--primary-accent-color), var(--quaternary-accent-color));
+            color: var(--text-primary-luminance);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .call-to-action-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        .call-to-action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .call-to-action-button:hover::before {
+            left: 100%;
+        }
+
+        .floating-bottom-cta-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--danger-indicator-hue), var(--primary-accent-color));
+            color: var(--text-primary-luminance);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
+            animation: breathing-pulse-animation 2s ease-in-out infinite;
+            min-width: 280px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes breathing-pulse-animation {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 15px 40px rgba(239, 68, 68, 0.8);
+            }
+        }
+
+        .whatsapp-floating-widget {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            cursor: pointer;
+            animation: breathing-pulse-animation 2s ease-in-out infinite;
+        }
+
+        .whatsapp-icon-container {
+            background: #25d366;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            position: relative;
+        }
+
+        .whatsapp-icon-svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .notification-badge-indicator {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger-indicator-hue);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            animation: notification-pulse-animation 1.5s ease-in-out infinite;
+        }
+
+        @keyframes notification-pulse-animation {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .risk-disclosure-section {
+            background: var(--background-secondary-shade);
+            border: 2px solid var(--warning-indicator-hue);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .risk-warning-header {
+            color: var(--warning-indicator-hue);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .risk-disclaimer-text {
+            color: var(--text-muted-luminance);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links-container {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-subtle-shade);
+            margin-top: 3rem;
+        }
+
+        .footer-link-element {
+            color: var(--secondary-accent-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link-element:hover {
+            color: var(--tertiary-accent-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section-container {
+                padding: 2rem 1rem;
+            }
+
+            .content-section-wrapper {
+                padding: 2rem 1rem;
+            }
+
+            .feature-highlight-container {
+                padding: 2rem;
+                margin: 2rem 0;
+                text-align: center;
+            }
+
+            .countdown-display-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.3rem;
+            }
+
+            .countdown-number-display {
+                font-size: 1.2rem;
+            }
+
+            .countdown-unit-container {
+                padding: 0.5rem;
+            }
+
+            .countdown-label-text {
+                font-size: 0.7rem;
+            }
+
+            .call-to-action-button {
+                display: block;
+                margin: 1rem auto;
+                text-align: center;
+            }
+
+            .whatsapp-floating-widget {
+                right: 15px;
+            }
+
+            .floating-bottom-cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="investment-landing-page-container">
+    <div class="main-content-wrapper">
+        <section class="hero-section-container">
+            <div class="hero-content-wrapper">
+                <h1 class="primary-headline-element">Das Geheimnis für Ihren Investment-Erfolg!</h1>
+                <p class="secondary-headline-element">Viele Anleger verlassen sich nur auf Nachrichten oder Insider-Tipps -- doch genau dadurch verpassen sie die wirklich lukrativen Chancen!</p>
+                
+                <div class="countdown-timer-component">
+                    <div class="countdown-timer-label">Limitiertes Angebot endet in:</div>
+                    <div class="countdown-display-grid">
+                        <div class="countdown-unit-container">
+                            <div class="countdown-number-display" id="countdown-days-display">01</div>
+                            <div class="countdown-label-text">Tage</div>
+                        </div>
+                        <div class="countdown-unit-container">
+                            <div class="countdown-number-display" id="countdown-hours-display">23</div>
+                            <div class="countdown-label-text">Stunden</div>
+                        </div>
+                        <div class="countdown-unit-container">
+                            <div class="countdown-number-display" id="countdown-minutes-display">59</div>
+                            <div class="countdown-label-text">Minuten</div>
+                        </div>
+                        <div class="countdown-unit-container">
+                            <div class="countdown-number-display" id="countdown-seconds-display">59</div>
+                            <div class="countdown-label-text">Sekunden</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image-container">
+                    <img src="img/2.jpg" alt="Investment Expert" class="hero-promotional-image">
+                </div>
+
+                <button class="call-to-action-button" onclick="k2()">Steigern Sie Ihre Entscheidungsfähigkeit</button>
+            </div>
+        </section>
+
+        <section class="content-section-wrapper">
+            <div class="feature-highlight-container">
+                <h2 class="section-headline-primary">Eine aktuelle Studie von Morgan Stanley beweist: Mit datenbasierten Investmentstrategien erzielen Sie deutlich höhere Renditen.</h2>
+                <p class="secondary-headline-element">Werden Sie jetzt Teil unserer exklusiven Investorengemeinschaft und sichern Sie sich:</p>
+
+                <ul class="feature-benefit-list">
+                    <li class="feature-benefit-item">
+                        <h3 class="benefit-title-text">Top-Aktien-Empfehlungen -- jede Woche!</h3>
+                        <p class="benefit-description-text">Erhalten Sie Zugang zu sorgfältig analysierten Aktien mit Renditen von 10 % und mehr. Unser Expertenteam liefert Ihnen die besten Chancen, damit Sie immer einen Schritt voraus sind!</p>
+                    </li>
+                    <li class="feature-benefit-item">
+                        <h3 class="benefit-title-text">Lernen Sie die Geheimnisse erfolgreicher Investoren</h3>
+                        <p class="benefit-description-text">Wir zeigen Ihnen nicht nur, welche Aktien sich lohnen, sondern auch, wie Sie mit soliden Unternehmen langfristig Gewinn machen.</p>
+                    </li>
+                    <li class="feature-benefit-item">
+                        <h3 class="benefit-title-text">Austausch mit einer starken Community</h3>
+                        <p class="benefit-description-text">Profitieren Sie vom Wissen gleichgesinnter Investoren. Tauschen Sie sich aus, erhalten Sie wertvolle Tipps und stärken Sie Ihr Investment-Know-how!</p>
+                    </li>
+                </ul>
+
+                <div class="promotional-image-container">
+                    <img src="img/1.jpg" alt="Investment Success" class="promotional-image-element">
+                </div>
+
+                <button class="call-to-action-button" onclick="k2()">Jetzt beitreten</button>
+            </div>
+
+            <div class="feature-highlight-container">
+                <h2 class="section-headline-secondary">Starten Sie jetzt durch -- verändern Sie Ihre finanzielle Zukunft!</h2>
+                <p class="benefit-description-text">Warten Sie nicht länger! Die Chance auf höhere Gewinne liegt direkt vor Ihnen. Klicken Sie auf den Button unten, treten Sie unserer Profi-Community bei und legen Sie den Grundstein für Ihre erfolgreiche Investmentreise!</p>
+
+                <div class="promotional-image-container">
+                    <img src="img/5.jpg" alt="Financial Future" class="promotional-image-element">
+                </div>
+ 
+            </div>
+
+            <div class="risk-disclosure-section">
+                <h3 class="risk-warning-header">⚠️ Wichtige Risikohinweise</h3>
+                <p class="risk-disclaimer-text">*Dieser Service dient nur zu Referenzzwecken und bietet keine Anlageberatung oder Finanzprodukt-Handelsdienstleistungen.</p>
+                <p class="risk-disclaimer-text">*Die bereitgestellten Informationen dienen nur zu Referenzzwecken und sollten nicht als Grundlage für Anlageentscheidungen verwendet werden.</p>
+                <p class="risk-disclaimer-text">*Das Risiko der endgültigen Anlageentscheidung liegt bei Ihnen.</p>
+                <p class="risk-disclaimer-text">*Die Genauigkeit der Daten wird nicht garantiert.</p>
+            </div>
+
+            <div class="footer-links-container">
+                <a href="#" class="footer-link-element">Datenschutzrichtlinie</a>
+                <a href="#" class="footer-link-element">Nutzungsbedingungen</a>
+            </div>
+        </section>
+
+        <button class="floating-bottom-cta-button" onclick="k2()">Jetzt Investment-Erfolg sichern!</button>
+
+        <div class="whatsapp-floating-widget" onclick="k2()">
+            <div class="whatsapp-icon-container">
+                <svg class="whatsapp-icon-svg" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63"/>
+                </svg>
+                <div class="notification-badge-indicator">1</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+     
+
+        function initializeCountdownTimer() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 2);
+            
+            const daysElement = document.getElementById('countdown-days-display');
+            const hoursElement = document.getElementById('countdown-hours-display');
+            const minutesElement = document.getElementById('countdown-minutes-display');
+            const secondsElement = document.getElementById('countdown-seconds-display');
+
+            function updateCountdownDisplay() {
+                const currentTime = new Date().getTime();
+                const targetTime = targetDate.getTime();
+                const timeDifference = targetTime - currentTime;
+
+                if (timeDifference > 0) {
+                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                    daysElement.textContent = days.toString().padStart(2, '0');
+                    hoursElement.textContent = hours.toString().padStart(2, '0');
+                    minutesElement.textContent = minutes.toString().padStart(2, '0');
+                    secondsElement.textContent = seconds.toString().padStart(2, '0');
+                } else {
+                    daysElement.textContent = '00';
+                    hoursElement.textContent = '00';
+                    minutesElement.textContent = '00';
+                    secondsElement.textContent = '00';
+                }
+            }
+
+            updateCountdownDisplay();
+            setInterval(updateCountdownDisplay, 1000);
+        }
+
+        function initializeDarkModeSupport() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCountdownTimer();
+            initializeDarkModeSupport();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3993330404218573');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3993330404218573&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<script>
+
+
+   function opensite() { 
+    fbq('track', 'Contact');
+           window.location.href = "https://www.google.com";
+        }
+		
+		  function openline() { 
+		   fbq('track', 'Contact');
+           window.location.href = "https://www.qq.com";
+        }
+        
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2025 그녀와 데이트하다</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="css/55.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- 첫 화면 부분 -->
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="particles-container" id="particlesContainer"></div>
+            <div class="hearts-container" id="heartsContainer"></div>
+            
+            <header class="hero-header">
+                <div class="logo-container">
+                    <h1 class="logo">그녀와 데이트하다</h1>
+                    <div class="logo-glow"></div>
+                </div>
+                <p class="tagline">다양한 플레이 방식을 갖춘 대규모 데이트 클럽</p>
+            </header>
+            
+            <!-- 새로운 3D 카드 캐러셀 -->
+            <div class="profiles-carousel">
+                <div class="carousel-container" id="carousel">
+                    <!-- 3D 카드는 JS로 생성됨 -->
+                </div>
+                
+                <!-- 배경 발광 효과 -->
+                <div class="glow-effect glow-left"></div>
+                <div class="glow-effect glow-center active"></div>
+                <div class="glow-effect glow-right"></div>
+                
+                <!-- 캐러셀 컨트롤 -->
+                <div class="carousel-controls">
+                    <div class="control-btn prev" id="prevBtn"></div>
+                    <div class="control-btn next" id="nextBtn"></div>
+                </div>
+            </div>
+            
+            <div class="gallery-display">
+                <div class="gallery-track" id="galleryTrack">
+                    <!-- 갤러리 아이템은 JS로 생성됨 -->
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+        
+        <!-- 인물 정보 부분 -->
+        <section class="profiles-section">
+            <div class="title-container">
+                <h2 class="section-title">추천 프로필</h2>
+            </div>
+            
+            <div class="info-profiles-grid" id="profilesGrid">
+                <!-- 프로필 카드는 JS로 동적 생성 -->
+            </div>
+        </section>
+        
+        <!-- 다운로드 부분 -->
+        <section class="download-section">
+            <div class="download-bg"></div>
+            
+            <div id="ss2" class="download-content">
+                <h2 class="download-title">지금 시작하세요</h2>
+                <p class="download-desc">더 많은 고품질 여성을 즉시 만나보세요.</p>
+                <button onclick="openline()" class="download-btn">라인 계정 추가</button></br></br></br>
+				 <button onclick="opensite()" class="download-btn">텔레그램 계정 추가</button>
+            </div>
+        </section>
+    </div>
+    <!-- 
+    <button class="floating-btn" id="floatingBtn" onclick="opensite()">지금 바로 시작하기</button>
+	-->
+    
+    <script>
+        // opensite 함수
+     
+        document.addEventListener('DOMContentLoaded', function() {
+            // 이미지 URL 목록
+            const imageUrls = [
+                'img/1.jpg',
+                'img/2.jpg',
+                'img/3.jpg',
+                'img/4.jpg',
+				 'img/15.jpg',
+                'img/16.jpg',
+                'img/17.jpg',
+                'img/5.jpg'
+            ];
+            
+            // 프로필 데이터
+            const profilesData = [
+                {
+                    image: 'img/16.jpg',
+                    name: '지연',
+                    age: 26,
+                    height: 170,
+                    distance: 2.2,
+                    description: '회사 비서, 신나는 경험 좋아함, 수영 즐김',
+                    popularity: 85,
+                    subtitle: '매력적인 비서'
+                },
+                {
+                    image: 'img/17.jpg',
+                    name: '미나',
+                    age: 24,
+                    height: 166,
+                    distance: 1.5,
+                    description: '주부, 짜릿한 경험 추구, 남편 출장 중',
+                    popularity: 90,
+                    subtitle: '짜릿한 경험 추구'
+                },
+                {
+                    image: 'img/18.jpg',
+                    name: '서연',
+                    age: 21,
+                    height: 160,
+                    distance: 1.7,
+                    description: '대학생, 자유분방한 성격, 새로운 경험 추구',
+                    popularity: 95,
+                    subtitle: '자유분방한 대학생'
+                },
+                {
+                    image: 'img/19.jpg',
+                    name: '하나',
+                    age: 28,
+                    height: 164,
+                    distance: 3.2,
+                    description: '방송인, 즐거운 시간 원함, 대학생',
+                    popularity: 88,
+                    subtitle: '즐거운 시간 원함'
+                },
+                {
+                    image: 'img/20.jpg',
+                    name: '소미',
+                    age: 22,
+                    height: 170,
+                    distance: 2.1,
+                    description: '피트니스 강사, 요가 좋아함, 탄력적인 몸매',
+                    popularity: 92,
+                    subtitle: '요가 좋아하는 강사'
+                },
+                {
+                    image: 'img/21.jpg',
+                    name: '소미',
+                    age: 24,
+                    height: 167,
+                    distance: 2.4,
+                    description: '피트니스 강사, 요가 좋아함, 탄력적인 몸매',
+                    popularity: 92,
+                    subtitle: '요가 좋아하는 강사'
+                },
+                {
+                    image: 'img/22.jpg',
+                    name: '소미',
+                    age: 21,
+                    height: 166,
+                    distance: 2.1,
+                    description: '피트니스 강사, 요가 좋아함, 탄력적인 몸매',
+                    popularity: 92,
+                    subtitle: '요가 좋아하는 강사'
+                }
+            ];
+            
+            // 초기화 함수 호출
+            createCarousel();
+            createParticles();
+            createInfiniteGallery();
+            createProfileCards();
+            createHeartAnimation();
+            initEventListeners();
+            
+            // 새로운 3D 캐러셀 생성
+            function createCarousel() {
+                const carousel = document.getElementById('carousel');
+                
+                // 처음 표시할 카드 인덱스
+                let activeIndex = 0;
+                
+                // 캐러셀에 표시할 카드 수 (기본 5개)
+                const totalProfiles = profilesData.length;
+                
+                // 캐러셀 카드 생성
+                for (let i = 0; i < totalProfiles; i++) {
+                    const profileData = profilesData[i];
+                    
+                    const card = document.createElement('div');
+                    card.classList.add('profile-card');
+                    card.dataset.index = i;
+                    
+                    // 초기 위치 설정 (가운데 카드가 활성화)
+                    if (i === activeIndex) {
+                        card.classList.add('center', 'active');
+                    } else if (i === (activeIndex + 1) % totalProfiles) {
+                        card.classList.add('right');
+                    } else if (i === (activeIndex - 1 + totalProfiles) % totalProfiles) {
+                        card.classList.add('left');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                    
+                    // 카드 내용 추가
+                    card.innerHTML = `
+                        <img src="${profileData.image}" alt="${profileData.name}" class="profile-image">
+                        <div class="card-badges">
+                            <div class="badge online">온라인</div>
+                            <div class="badge hot">인기</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${profileData.name}</h3>
+                            <p class="card-subtitle">${profileData.subtitle}</p>
+                        </div>
+                        <div class="card-shine"></div>
+                    `;
+                    
+                    carousel.appendChild(card);
+                    
+                    // 카드 클릭 이벤트 - 해당 카드가 중앙이 아니면 중앙으로 이동
+                    card.addEventListener('click', function() {
+                        const clickedIndex = parseInt(this.dataset.index);
+                        if (clickedIndex !== activeIndex) {
+                            if ((clickedIndex === (activeIndex + 1) % totalProfiles) || 
+                                (clickedIndex === (activeIndex - 1 + totalProfiles) % totalProfiles)) {
+                                rotateCarousel(clickedIndex);
+                            }
+                        }
+                    });
+                }
+                
+                // 좌우 버튼 이벤트 리스너
+                document.getElementById('prevBtn').addEventListener('click', function() {
+                    const newIndex = (activeIndex - 1 + totalProfiles) % totalProfiles;
+                    rotateCarousel(newIndex);
+                });
+                
+                document.getElementById('nextBtn').addEventListener('click', function() {
+                    const newIndex = (activeIndex + 1) % totalProfiles;
+                    rotateCarousel(newIndex);
+                });
+                
+                // 캐러셀 회전 함수
+                function rotateCarousel(newIndex) {
+                    if (newIndex === activeIndex) return;
+                    
+                    // 기존 활성 카드 비활성화
+                    const cards = document.querySelectorAll('.profile-card');
+                    cards.forEach(card => {
+                        card.classList.remove('left', 'center', 'right', 'active');
+                        card.style.display = 'none';
+                    });
+                    
+                    // 새 위치 설정
+                    activeIndex = newIndex;
+                    
+                    // 활성 카드 설정
+                    cards[activeIndex].classList.add('center', 'active');
+                    cards[activeIndex].style.display = 'block';
+                    
+                    // 좌우 카드 설정
+                    const rightIndex = (activeIndex + 1) % totalProfiles;
+                    const leftIndex = (activeIndex - 1 + totalProfiles) % totalProfiles;
+                    
+                    cards[rightIndex].classList.add('right');
+                    cards[rightIndex].style.display = 'block';
+                    
+                    cards[leftIndex].classList.add('left');
+                    cards[leftIndex].style.display = 'block';
+                    
+                    // 발광 효과 업데이트
+                    const glowEffects = document.querySelectorAll('.glow-effect');
+                    glowEffects.forEach(glow => glow.classList.remove('active'));
+                    
+                    if (cards[activeIndex].classList.contains('center')) {
+                        document.querySelector('.glow-center').classList.add('active');
+                    } else if (cards[activeIndex].classList.contains('left')) {
+                        document.querySelector('.glow-left').classList.add('active');
+                    } else if (cards[activeIndex].classList.contains('right')) {
+                        document.querySelector('.glow-right').classList.add('active');
+                    }
+                    
+                    // 카드 빛 효과 애니메이션
+                    cards.forEach(card => {
+                        if (card.classList.contains('active')) {
+                            animateCardShine(card);
+                        }
+                    });
+                    
+                    // 갤러리 아이템 활성화 업데이트
+                    updateGalleryActiveState(activeIndex);
+                }
+                
+                // 카드 빛 효과 애니메이션
+                function animateCardShine(card) {
+                    const shine = card.querySelector('.card-shine');
+                    anime({
+                        targets: shine,
+                        left: ['150%', '-150%'],
+                        easing: 'easeInOutSine',
+                        duration: 1500,
+                        delay: 300
+                    });
+                }
+                
+                // 초기 카드에 빛 효과 적용
+                setTimeout(() => {
+                    const activeCard = document.querySelector('.profile-card.active');
+                    if (activeCard) {
+                        animateCardShine(activeCard);
+                    }
+                }, 1000);
+                
+                // 갤러리 활성화 상태 업데이트
+                function updateGalleryActiveState(activeIndex) {
+                    const galleryItems = document.querySelectorAll('.gallery-item');
+                    galleryItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 활성 인덱스와 일치하는 모든 갤러리 아이템 활성화
+                    document.querySelectorAll(`.gallery-item[data-index="${activeIndex}"]`).forEach(item => {
+                        item.classList.add('active');
+                    });
+                }
+            }
+            
+            // 파티클 생성
+            function createParticles() {
+                const particlesContainer = document.getElementById('particlesContainer');
+                const isMobile = window.innerWidth <= 767;
+                const particleCount = isMobile ? 25 : 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 4 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.opacity = Math.random() * 0.5 + 0.1;
+                    
+                    particlesContainer.appendChild(particle);
+                    
+                    anime({
+                        targets: particle,
+                        translateX: () => anime.random(-60, 60) + 'px',
+                        translateY: () => anime.random(-60, 60) + 'px',
+                        scale: [
+                            { value: 1 },
+                            { value: anime.random(1.3, 2.0) },
+                            { value: 1 }
+                        ],
+                        opacity: [
+                            { value: particle.style.opacity },
+                            { value: anime.random(0.4, 0.8) },
+                            { value: particle.style.opacity }
+                        ],
+                        easing: 'easeInOutSine',
+                        duration: () => anime.random(4000, 8000),
+                        loop: true,
+                        delay: () => anime.random(0, 1000)
+                    });
+                }
+            }
+            
+            // 무한 스크롤 갤러리 생성
+            function createInfiniteGallery() {
+                const galleryTrack = document.getElementById('galleryTrack');
+                
+                // 갤러리 컨텐츠를 감싸는 wrapper 생성
+                const wrapper = document.createElement('div');
+                wrapper.className = 'gallery-content-wrapper';
+                galleryTrack.appendChild(wrapper);
+                
+                // 세트 크기 정의
+                const setSize = imageUrls.length;
+                const totalItems = 10;
+                
+                // 첫 번째 세트 생성
+                for (let i = 0; i < totalItems; i++) {
+                    const imageIndex = i % setSize;
+                    createGalleryItem(wrapper, imageIndex, i);
+                }
+                
+                // 두 번째 세트 생성 (연속 스크롤을 위해)
+                const cloneWrapper = wrapper.cloneNode(true);
+                galleryTrack.appendChild(cloneWrapper);
+                
+                // 클릭 이벤트 다시 부착
+                cloneWrapper.querySelectorAll('.gallery-item').forEach((item, i) => {
+                    const imageIndex = i % setSize;
+                    item.addEventListener('click', function() {
+                        rotateToIndex(imageIndex);
+                    });
+                });
+            }
+            
+            // 갤러리 아이템 생성 헬퍼 함수
+            function createGalleryItem(container, imageIndex, itemIndex) {
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+                galleryItem.setAttribute('data-index', imageIndex);
+                
+                if (imageIndex === 0) galleryItem.classList.add('active');
+                
+                const img = document.createElement('img');
+                img.src = imageUrls[imageIndex];
+                img.alt = '프로필 이미지';
+                
+                galleryItem.appendChild(img);
+                container.appendChild(galleryItem);
+                
+                // 클릭 이벤트
+                galleryItem.addEventListener('click', function() {
+                    rotateToIndex(imageIndex);
+                });
+            }
+            
+            // 특정 인덱스로 캐러셀 회전
+            function rotateToIndex(index) {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                
+                // 현재 활성화된 카드 인덱스 찾기
+                const activeCard = document.querySelector('.profile-card.active');
+                if (activeCard) {
+                    const currentIndex = parseInt(activeCard.dataset.index);
+                    
+                    // 클릭한 인덱스가 현재 인덱스와 다르면 회전
+                    if (index !== currentIndex) {
+                        if (index > currentIndex) {
+                            nextBtn.click();
+                        } else {
+                            prevBtn.click();
+                        }
+                    }
+                }
+            }
+            
+            // 프로필 카드 생성
+            function createProfileCards() {
+                const profilesGrid = document.getElementById('profilesGrid');
+                const isMobile = window.innerWidth <= 767;
+                const cardCount = isMobile ? 6 : 10;
+                
+                for (let i = 0; i < cardCount; i++) {
+                    const profileIndex = i % 5;
+                    const profileData = profilesData[profileIndex];
+                    
+                    const profileCard = document.createElement('div');
+                    profileCard.classList.add('info-profile-card');
+                    profileCard.dataset.index = i;
+                    
+                    profileCard.style.setProperty('--fill-width', `${profileData.popularity}%`);
+                    
+                    profileCard.innerHTML = `
+                        <div class="status-badges">
+                            <div class="status-badge online-badge">온라인</div>
+                            <div class="status-badge verified-badge">인증됨</div>
+                        </div>
+                        <img src="${profileData.image}" alt="${profileData.name}" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">${profileData.name}</h3>
+                            <div class="card-meta">
+                                <div class="meta-badge">
+                                    <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,8.39C13.57,9.4 15.42,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20C9,20 6.39,18.34 5,15.89L6.75,14V13A1.25,1.25 0 0,1 8,11.75A1.25,1.25 0 0,1 9.25,13V14H12M16,11.75A1.25,1.25 0 0,0 14.75,10.5A1.25,1.25 0 0,0 13.5,11.75A1.25,1.25 0 0,0 14.75,13A1.25,1.25 0 0,0 16,11.75Z" /></svg>
+                                    ${profileData.age}세
+                                </div>
+                                <div class="meta-badge">
+                                    <svg viewBox="0 0 24 24"><path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" /></svg>
+                                    ${profileData.height}cm
+                                </div>
+                                <div class="meta-badge">
+                                    <svg viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>
+                                    ${profileData.distance}km
+                                </div>
+                            </div>
+                            <p class="card-bio">${profileData.description}</p>
+                            <div class="popularity-meter">
+                                <div class="popularity-text">
+                                    <span>인기도</span>
+                                    <span>${profileData.popularity}%</span>
+                                </div>
+                                <div class="popularity-bar">
+                                    <div class="popularity-fill"></div>
+                                </div>
+                            </div> 
+							<a href="#ss2" class="contact-btn">연락하기</a>
+                        </div>
+                    `;
+                    
+                    profilesGrid.appendChild(profileCard);
+                    
+                    const contactBtn = profileCard.querySelector('.contact-btn');
+                    contactBtn.addEventListener('click', function() {
+                       // alert(`${profileData.name}님과 연락을 시작합니다!`);
+                    });
+                }
+            }
+            
+            // 하트 애니메이션 생성
+            function createHeartAnimation() {
+                const heartsContainer = document.getElementById('heartsContainer');
+                const isMobile = window.innerWidth <= 767;
+                
+                function createHeart() {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    
+                    const size = Math.random() * 15 + 10;
+                    heart.style.width = `${size}px`;
+                    heart.style.height = `${size}px`;
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.bottom = '0';
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    anime({
+                        targets: heart,
+                        translateY: () => -anime.random(200, 400),
+                        translateX: () => anime.random(-60, 60),
+                        rotate: () => anime.random(-180, 180),
+                        opacity: [0, () => anime.random(0.5, 0.8), 0],
+                        scale: [0.5, () => anime.random(0.8, 1.3), 0.5],
+                        easing: 'easeOutExpo',
+                        duration: () => anime.random(3000, 6000),
+                        complete: function() {
+                            heart.remove();
+                        }
+                    });
+                }
+                
+                const heartInterval = isMobile ? 500 : 300;
+                setInterval(createHeart, heartInterval);
+                
+                const initialHearts = isMobile ? 8 : 15;
+                for (let i = 0; i < initialHearts; i++) {
+                    setTimeout(createHeart, i * 200);
+                }
+            }
+            
+            // 이벤트 리스너 초기화
+            function initEventListeners() {
+                document.querySelector('.download-btn').addEventListener('click', function() {
+                   window.location.href="https://www.qq.com";
+                });
+                
+                document.getElementById('floatingBtn').addEventListener('click', function() {
+                    opensite();
+                });
+                
+                // 화면 크기 변경에 따른 UI 최적화
+                window.addEventListener('resize', function() {
+                    // 현재 활성화된 카드를 찾고 회전 애니메이션 다시 적용
+                    const activeCard = document.querySelector('.profile-card.active');
+                    if (activeCard) {
+                        const activeIndex = parseInt(activeCard.dataset.index);
+                        document.querySelectorAll('.profile-card').forEach(card => {
+                            const index = parseInt(card.dataset.index);
+                            
+                            // 화면 크기에 맞게 카드 위치 조정
+                            if (index === activeIndex) {
+                                card.classList.add('center', 'active');
+                            } else if (index === (activeIndex + 1) % profilesData.length) {
+                                card.classList.add('right');
+                            } else if (index === (activeIndex - 1 + profilesData.length) % profilesData.length) {
+                                card.classList.add('left');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
