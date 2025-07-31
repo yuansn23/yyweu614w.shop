@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>김영익 교수의 무료 주식 투자 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .section {
+            padding: 40px 20px;
+        }
+        
+        .cta-image {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: breathe 2s ease-in-out infinite;
+        }
+        
+        .cta-image:hover {
+            transform: scale(1.1) !important;
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Section 1: Introduction Image -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/1e583aab351ae1560153a416a8c3ff7.jpg" 
+                 alt="김영익 교수" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+        </div>
+    </section>
+
+    <!-- Section 2: Introduction Text -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto">
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p>대가 여러분, 저는 김영익이라고 하며, 한국의 경제학자이자 한국경제영상망의 회원입니다. 한국의 1인당 소득은 높지만 빈부격차는 계속 확대되고 있습니다. 이데올로기적 제약으로 인해 한국 일반 국민들의 생활비는 극도로 높습니다. 직장인들, 특히 젊은 세대는 엄청난 압박을 받고 있으며, 생활 여건이 어렵고 거의 출구가 없으며, 승진 기회도 제한적이고, 사업 환경도 매우 열악합니다. 따라서 저는 주식 투자를 열심히 공부해 전문 투자자가 되었습니다. 2년 학습 후 제 수입은 300억 원에 달했습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Professor Image -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/73746cd0e44d0576830793a96109619.jpg" 
+                 alt="김영익 교수" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+        </div>
+    </section>
+
+    <!-- Section 4: Warning and Investment Philosophy -->
+    <section class="section bg-red-50 border-l-4 border-red-500">
+        <div class="max-w-lg mx-auto">
+            <div class="space-y-4 text-gray-700">
+                <p><strong>특별 주의: 유료 그룹 가입을 요구하는 모든 그룹은 사기입니다</strong></p>
+                <p>저는 무료 주식 애호가 교류 그룹을 만들었습니다.</p>
+                <p>모든 투자에는 경제학과 그 동향에 대한 기본적인 이해가 필요합니다. 자본주의 사회에서 살아야 하는 우리에게 좋든 싫든 재무 관리를 배우는 것은 선택사항이 아니라 필수라고 생각합니다. 진짜 방법이 있다고 가정하면, 주식 투자의 수익은 열심히 일해서 받는 월급보다 수십 배, 수백 배 높을 수 있습니다.</p>
+                <p>사람들은 항상 일하러 갈 수는 없습니다. 현재의 곤경에서 벗어나기 위해 뭔가를 해야 합니다. 그렇지 않으면 나이가 들어서도 계속 일할 수 있을까요? 그들의 급여가 가족을 부양하기에 충분할까요?</p>
+                <p>이제 저는 제 방법을 무료로 공유하기로 결정했습니다. 기술적이면서도 배우기 쉽기 때문에 주식 투자로 돈을 버는 방법을 단계별로 모든 사람에게 가르치겠습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Strategy Images -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto space-y-6">
+            <img src="img/9bb7ff8b58e50eb3673e90cffdd0ae1.jpg" 
+                 alt="투자 전략 1" 
+                 class="w-full rounded-xl shadow-lg">
+            
+        </div>
+    </section>
+
+    <!-- Section 6: Mission and Success Rate -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto">
+            <div class="text-gray-700 space-y-4 mb-6">
+                <p>동시에, 우리는 모든 한국 시민이 주식 투자를 통해 얻을 수 있는 이익을 창출하여 한국 금융 시장을 활성화하고 한국 시민의 복지를 증진하기를 희망합니다.</p>
+                <p><span class="text-red-600 font-bold">저는 여러분에게 주식 투자 방법을 가르쳐 드리겠습니다. 성공률은 99%에 달합니다.</span> 카카오톡에서 "추가"를 클릭하면 보내드리겠습니다. 손실은 없지만 기회를 놓치는 것이 진짜 손실입니다.</p>
+            </div>
+            <div class="bg-yellow-100 p-4 rounded-lg text-center mb-6">
+                <p class="font-bold text-gray-800">⚠️ 아래 버튼을 클릭하여 카카오톡에 추가하세요!</p>
+                <p class="text-sm text-gray-600 mt-2">"9"를 보내주시면 8월에 급등할 3개 종목을 보내드립니다!</p>
+                <p class="text-sm text-gray-600 mt-2">오늘 가입한 첫 300명의 투자자는 제 투자 커뮤니티의 VIP 회원이 되며, 각 투자자는 일대일 상담 서비스를 받게 됩니다.</p>
+            </div>
+            <div class="text-center">
+                <img src="img/band.png" 
+                     alt="지금 바로 가입하기" 
+                     class="w-full max-w-xs mx-auto cta-image" 
+                     onclick="r2()">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Free Group Text -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto">
+            <div class="space-y-4 text-gray-700">
+                <p>저는 무료 주식 애호가 교류 그룹을 만들었습니다.</p>
+                <p>일부 회원들이 단 일주일 만에 상당한 투자 수익을 얻었습니다! 1월 말까지 우리 회원 중 절반 이상의 포트폴리오가 좋은 성장 실적을 거두었으며, 일부 수익률은 상당한 수준에 달했습니다. 통계에 따르면 회원들의 평균 주간 복합 수익률은 368%입니다 (수익은 개인차가 있으며 참고용입니다).</p>
+                <p>지난주 우리가 추천한 주식은 눈부신 성과를 보였으며, 최고 상승률은 420%에 달했습니다. 전문적인 분석과 과학적인 투자 전략에 의존하여 우리는 회원들이 시장 기회를 포착하고 재산 증식을 실현하도록 도와줍니다.</p>
+                <p>투자 성공에는 과학적 계획과 전문적 지원이 필요합니다. 많은 사람들이 올바른 투자 방법을 배움으로써 자신의 재정 목표를 실현했습니다.</p>
+                <p class="text-center font-bold text-lg text-blue-600">38,000명 이상의 회원이 이미 무료로 가입했습니다. 자리가 제한되어 있습니다!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Community Image -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/d8ec76a7c03f3dfa08805d439806e7b.jpg" 
+                 alt="커뮤니티 성과" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+            <img src="img/band.png" 
+                 alt="커뮤니티 참여하기" 
+                 class="w-full max-w-xs mx-auto cta-image" 
+                 onclick="r2()">
+        </div>
+    </section>
+
+    <!-- Section 9: Important Notice -->
+    <section class="section bg-yellow-50 border-l-4 border-yellow-500">
+        <div class="max-w-lg mx-auto">
+            <h3 class="text-lg font-bold mb-4 text-yellow-800">중요 알림:</h3>
+            <div class="text-gray-700 space-y-2">
+                <p>투자에는 위험이 있으며, 수익은 시장 변동과 개인 투자 상황에 따라 달라집니다.</p>
+                <p>과거 실적이 미래 성과를 나타내는 것은 아니며, 자신의 재정 목표와 위험 감수 능력에 따라 투자 결정을 내리시기 바랍니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: What You Get Title -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto">
+            <h3 class="text-2xl font-bold mb-6 text-center">당신이 얻을 수 있는 것?</h3>
+        </div>
+    </section>
+
+    <!-- Section 11: Benefit Image 1 -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/ebd01cd9-7e87-4b2a-ba55-a9a4673af8b8.jpg" 
+                 alt="전문 분석" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+        </div>
+    </section>
+
+    <!-- Section 12: Benefit Image 2 -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/d8d77f83-1a49-4bee-967b-1608ce7fb479.jpg" 
+                 alt="개인 컨설팅" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+        </div>
+    </section>
+
+    <!-- Section 13: Benefit Image 3 -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/d727b1ce0fe06944f1617057be6c24e.jpg" 
+                 alt="커뮤니티" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+        </div>
+    </section>
+
+    <!-- Section 14: Market Insights -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto">
+            <h3 class="text-xl font-bold mb-6 text-center">주식시장에 대한 핵심 통찰을 공유하고 싶습니다:</h3>
+            <div class="space-y-4 text-gray-700">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>1.</strong> 시장 변동이 심하여 더 이상 인내심을 갖고 연구하고 기다릴 시간이 없습니다.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>2.</strong> 정보 부족. 대부분의 사람들은 정확한 시장 정보가 부족해 현명한 결정을 내릴 수 없습니다.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>3.</strong> 심리적 압박. 투자에 대한 탐욕과 두려움으로 인해 효과적으로 대처할 수 없습니다.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>4.</strong> 위험 관리. 위험 관리는 투자의 핵심입니다. 레버리지를 잘못 사용하면 더 큰 손실이 발생할 수 있습니다.</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 bg-blue-100 p-4 rounded-lg text-center">
+                <p class="font-bold text-blue-800 mb-2">⚠️ 우리는 귀하에게 가치 있는 정보와 자료를 제공할 것을 약속드립니다.</p>
+                <p class="text-sm text-blue-600">BAND에 가입하려면 아래 버튼을 클릭하세요! "9"를 보내주시면 8월에 급등할 주식만 보내드립니다.</p>
+                <p class="text-sm text-blue-600 mt-2">오늘 첫 300명의 투자자가 우리의 VIP 회원이 될 수 있으며 투자 커뮤니티에 가입하여 각 투자자는 1:1 상담을 받게 됩니다. 🔥</p>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <img src="img/band.png" 
+                     alt="VIP 회원 되기" 
+                     class="w-full max-w-xs mx-auto cta-image" 
+                     onclick="r2()">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 15: Join Group Chat -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto">
+            <p class="text-lg font-bold mb-6 text-center">지금 우리 그룹채팅에 가입하고 조교를 추가하세요, 곧 오를 3개 종목을 보내드리겠습니다.</p>
+        </div>
+    </section>
+
+    <!-- Section 16: Final Image 1 -->
+    <section class="section bg-white">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/1d76c479-e315-40bd-8f02-f7db79eff89f.jpg" 
+                 alt="최종 가입" 
+                 class="w-full rounded-xl shadow-lg mb-6">
+        </div>
+    </section>
+
+    <!-- Section 17: Final Action Image -->
+    <section class="section bg-gray-50">
+        <div class="max-w-lg mx-auto text-center">
+            <img src="img/428f7e5aab2f1b56c27b780f6eb564e.jpg" 
+                 alt="행동 촉구" 
+                 class="w-full rounded-xl shadow-lg cta-image" 
+                 onclick="r2()">
+        </div>
+    </section>
+
+    <!-- Floating Button -->
+    <div class="floating-btn">
+        <img src="img/band.png" 
+             alt="무료 가입" 
+             class="w-64 h-auto max-w-none" 
+             onclick="r2()" 
+             style="cursor: pointer;">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-lg mx-auto px-6">
+            <div class="bg-gray-800 p-4 rounded-lg mb-6">
+                <h3 class="text-lg font-bold mb-3 text-yellow-400">위험 고지사항</h3>
+                <div class="text-xs space-y-2 text-gray-300">
+                    <p>• 투자 위험: 모든 투자에는 원금 손실의 위험이 있습니다.</p>
+                    <p>• 수익률 변동: 과거 수익률은 미래 수익을 보장하지 않습니다.</p>
+                    <p>• 개인 책임: 모든 투자 결정은 개인의 판단과 책임하에 이루어져야 합니다.</p>
+                    <p>• 본 서비스는 교육 목적이며, 개별 투자 권유가 아닙니다.</p>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs text-gray-400">
+                <p>&copy; 2024 김영익 주식 투자 가이드. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white">이용약관</a>
+                    <a href="#" class="hover:text-white">개인정보처리방침</a>
+                    <a href="#" class="hover:text-white">투자위험고지서</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function r2() {
+            window.open('https://band.us/@investmentguide', '_blank');
+        }
+    </script>
+</body>
+</html>
