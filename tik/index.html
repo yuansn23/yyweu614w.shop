@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok小店 - 2026年最具潜力的创业机会</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00f2ea 0%, #ff0050 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-cyan: #00f2ea;
+            --accent-pink: #ff0050;
+            --accent-orange: #ff6b35;
+            --dark-bg: #0a0a0a;
+            --dark-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 背景动画效果 */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            background:
+                radial-gradient(circle at 20% 50%, var(--accent-cyan) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent-pink) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.25; transform: scale(1.1); }
+        }
+
+        /* Hero Section - 第一屏 */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--primary-gradient);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            animation: slideDown 0.8s ease-out;
+            box-shadow: 0 4px 20px rgba(0, 242, 234, 0.3);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 20px 60px rgba(0, 242, 234, 0.2);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 1s both, float 3s ease-in-out infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 0, 80, 0.6);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 15px 40px rgba(0, 242, 234, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 3rem 1.5rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+        }
+
+        .service-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-item {
+            background: var(--dark-card);
+            padding: 1.8rem 1.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:nth-child(2) {
+            border-left-color: var(--accent-pink);
+        }
+
+        .service-item:nth-child(3) {
+            border-left-color: var(--accent-orange);
+        }
+
+        .service-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .service-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .cta-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(255, 0, 80, 0.2);
+        }
+
+        .cta-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cta-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* 底部悬浮按钮 */
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 1rem 2.5rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-button:hover {
+            transform: translateX(-50%) scale(1.05) translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 0, 80, 0.7);
+        }
+
+        /* 响应式调整 */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 4rem 3rem;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Hero Section - 第一屏 -->
+    <section class="hero">
+        <span class="hero-badge">🚀 2026年最具潜力</span>
+        <h1>TikTok小店<br>创业机会</h1>
+        <p class="subtitle">您是否想在家开启自己的线上生意？</p>
+
+        <div class="hero-image">
+            <img src="img/2.png" alt="TikTok小店创业">
+        </div>
+
+        <p class="hero-text">
+            只需一部手机，您就能经营TikTok小店，轻松实现创业梦想！无须囤货，无需复杂操作，为您量身定制最简单的创业模式。
+        </p>
+
+        <button class="cta-button" onclick="k2()">申请加入</button>
+    </section>
+
+    <!-- Features Section - 第二屏开始 -->
+    <section class="features">
+        <h2 class="section-title">为什么选择TikTok小店？</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3 class="feature-title">轻松入门</h3>
+                <p class="feature-desc">只需一部手机，随时随地即可发布内容，无需技术背景或经验。</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🛍️</span>
+                <h3 class="feature-title">无需囤货</h3>
+                <p class="feature-desc">我们提供全方位的工具支持，您无需担心库存压力，轻松运营商店。</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">💡</span>
+                <h3 class="feature-title">可复制的成功模式</h3>
+                <p class="feature-desc">学习和复制其他成功店主的经验，让您在短时间内实现盈利。</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3 class="feature-title">强大的市场潜力</h3>
+                <p class="feature-desc">TikTok拥有数亿活跃用户，巨大的市场为您的生意提供无限可能。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2 class="section-title">我们为您提供</h2>
+
+        <div class="service-list">
+            <div class="service-item">
+                <h3 class="service-title">全面培训</h3>
+                <p class="service-desc">专业培训课程，帮助您快速掌握运营技巧。</p>
+            </div>
+
+            <div class="service-item">
+                <h3 class="service-title">实用工具</h3>
+                <p class="service-desc">我们提供必要的工具和软件，助力您高效管理。</p>
+            </div>
+
+            <div class="service-item">
+                <h3 class="service-title">持续支持</h3>
+                <p class="service-desc">随时解答您的疑问，确保您在创业路上顺利前行。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="cta-image">
+            <img src="img/1.jpg" alt="加入我们">
+        </div>
+
+        <h2 class="cta-title">您准备好了吗？</h2>
+        <p class="cta-text">
+            加入我们的大家庭，与我们一起开启成功之旅！<br>
+            立即添加我的WhatsApp，获取更多信息和专属指导！
+        </p>
+
+        <button class="whatsapp-button" onclick="k2()">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            添加WhatsApp
+        </button>
+    </section>
+
+    <!-- 底部悬浮按钮 -->
+    <button class="floating-button" onclick="k2()">立即咨询</button>
+
+    <script>
+        // 深色模式支持
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // k2方法 - 跳转到qq.com
+        function k2() {
+            window.location.href = 'https://www.qq.com';
+        }
+    </script>
+</body>
+</html>
